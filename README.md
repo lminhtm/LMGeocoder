@@ -1,6 +1,6 @@
 LMGeocoder
 ==============
-LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically from user input. It is blocked-based geocoder, use both Google Geocoding API and Apple Geocoding Framework.
+LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically from user input. It is blocked-based geocoder, use both Google Geocoding API and Apple iOS Geocoding Framework.
 
 ![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
