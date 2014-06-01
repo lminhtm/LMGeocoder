@@ -13,8 +13,7 @@ LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically f
 LMGeocoder requires iOS 7.0 or above and ARC.
 
 ## Usage
-(see sample Xcode project in `/LMGeocoderDemo`)
-Import the `LMGeocoder.h` header
+Import the `LMGeocoder.h` header (see sample Xcode project in `/LMGeocoderDemo`)
 #### Geocoding
 ```ObjC
 [[LMGeocoder sharedInstance] geocodeAddressString:addressString
