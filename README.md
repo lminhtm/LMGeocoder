@@ -6,15 +6,17 @@ LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically f
 
 ## Installation
 * Drag the `LMGeocoder` folder into your project.
-* Add the *CoreLocation* to your project.
+* Add the <b>CoreLocation</b> to your project.
 * Add the -fno-objc-arc compiler flag to SBJson files in Target Settings > Build Phases > Compile Sources.
 
 ## Requirements
 LMGeocoder requires iOS 7.0 or above and ARC.
 
 ## Usage
+(see sample Xcode project in `/LMGeocoderDemo`)
+Import the `LMGeocoder.h` header
 #### Geocoding
-<pre>
+```ObjC
 [[LMGeocoder sharedInstance] geocodeAddressString:addressString
                                           service:kLMGeocoderGoogleService
                                 completionHandler:^(LMAddress *address, NSError *error) {
@@ -25,10 +27,10 @@ LMGeocoder requires iOS 7.0 or above and ARC.
                                         NSLog(@"Error: %@", error.description);
                                     }
                                 }];
-</pre>
+```
 
 #### Reverse Geocoding
-<pre>
+```ObjC
 [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
                                               service:kLMGeocoderGoogleService
                                     completionHandler:^(LMAddress *address, NSError *error) {
@@ -39,7 +41,11 @@ LMGeocoder requires iOS 7.0 or above and ARC.
                                             NSLog(@"Error: %@", error.description);
                                         }
                                     }];
-</pre>
+```
 
 ## License
 LMGeocoder is licensed under the terms of the MIT License.
+
+## Say Hi
+* [github.com/lminhtm](https://github.com/lminhtm)
+* [twitter.com/lminhdeptrai](https://twitter.com/lminhdeptrai)
