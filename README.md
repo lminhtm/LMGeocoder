@@ -1,6 +1,5 @@
 LMGeocoder
 ==========
-[![Gmail: lminhtm@gmail.com](http://img.shields.io/badge/contact-%40yjaiouch-blue.svg?style=flat)](lminhtm@gmail.com)
 LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically from user input. It is blocked-based geocoder, use both Google Geocoding API and MapKit framework.
 ![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
