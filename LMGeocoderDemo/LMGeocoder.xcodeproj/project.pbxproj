@@ -370,6 +370,7 @@
 				62C9438A193AEC5300A929FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
