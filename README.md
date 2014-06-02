@@ -6,7 +6,7 @@ LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically f
 
 ## Installation
 * Drag the `LMGeocoder` folder into your project.
-* Add the <b>CoreLocation</b> to your project.
+* Add the <b>CoreLocation.framework</b> to your project.
 * Add the -fno-objc-arc compiler flag to SBJson files in Target Settings > Build Phases > Compile Sources.
 
 ## Requirements
