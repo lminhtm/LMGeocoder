@@ -46,5 +46,5 @@ Import the `LMGeocoder.h` header (see sample Xcode project in `/LMGeocoderDemo`)
 LMGeocoder is licensed under the terms of the MIT License.
 
 ## Say Hi
-* [github.com/lminhtm](https://github.com/lminhtm)
-* [twitter.com/lminhdeptrai](https://twitter.com/lminhdeptrai)
+* [Blog](http://laptrinhiphone.blogspot.com/)
+* [Twitter](https://twitter.com/minhluongnguyen)
