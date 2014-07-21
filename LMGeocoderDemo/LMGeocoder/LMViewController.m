@@ -67,8 +67,14 @@
                                         completionHandler:^(LMAddress *address, NSError *error) {
                                             if (address && !error) {
                                                 self.addressLabel.text = address.formattedAddress;
-                                                [self.addressLabel sizeToFit];
+                                                
+                                            }else{
+                                            
+                                                self.addressLabel.text = @"Error msg goes here";// or use [error localizedDescription]
+                                            
                                             }
+                                            
+                                            [self.addressLabel sizeToFit];
                                         }];
 }
 

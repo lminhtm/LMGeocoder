@@ -37,5 +37,19 @@
 
 /** The formatted address. */
 @property (nonatomic, copy) NSString *formattedAddress;
+/**
+ *  Response from server is usable
+ */
+@property (assign)BOOL isValid;
+
+/**
+ *  Initialize with response from server
+ *
+ *  @param locationData response object recieved from server
+ *  @param serviceType  pass here kLMGeocoderGoogleService or kLMGeocoderAppleService
+ *
+ *  @return object with all data set for use
+ */
+-(id)initWithLocationData:(id)locationData forServiceType:(int)serviceType;
 
 @end

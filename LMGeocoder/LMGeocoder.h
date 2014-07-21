@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "LMAddress.h"
-#import "JSON.h"
 
 /** LMReverseGeocoder service API. */
 typedef NS_ENUM(NSInteger, LMGeocoderService) {
