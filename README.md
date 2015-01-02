@@ -4,16 +4,21 @@ LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically f
 
 ![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
-## Installation
-* Drag the `LMGeocoder` folder into your project.
-* Add the <b>CoreLocation.framework</b> to your project.
-* Add the -fno-objc-arc compiler flag to SBJson files in Target Settings > Build Phases > Compile Sources.
+## Features
+* Wrapper for Geocoding and Reverse geocoding with blocked-based coding.
+* Use both Google Geocoding API and Apple iOS Geocoding Framework.
 
 ## Requirements
-LMGeocoder requires iOS 7.0 or above and ARC.
+* iOS 7.0 or higher 
+* ARC
+
+## Installation
+* Drag the `LMGeocoder` folder into your project.
+* Add the `CoreLocation.framework` to your project.
+* Add the `-fno-objc-arc` compiler flag to SBJson files in Target Settings > Build Phases > Compile Sources.
+* Add `#include "LMGaugeView.h"` to the top of classes that will use it.
 
 ## Usage
-Import the `LMGeocoder.h` header (see sample Xcode project in `/LMGeocoderDemo`)
 #### Geocoding
 ```ObjC
 [[LMGeocoder sharedInstance] geocodeAddressString:addressString
@@ -42,9 +47,12 @@ Import the `LMGeocoder.h` header (see sample Xcode project in `/LMGeocoderDemo`)
                                     }];
 ```
 
+See sample Xcode project in `/LMGeocoderDemo`
+
 ## License
 LMGeocoder is licensed under the terms of the MIT License.
 
 ## Say Hi
-* [Blog](http://laptrinhiphone.blogspot.com/)
 * [Twitter](https://twitter.com/minhluongnguyen)
+* [LinkedIn](http://www.linkedin.com/in/lminh)
+* [Blog](http://laptrinhiphone.blogspot.com/)
