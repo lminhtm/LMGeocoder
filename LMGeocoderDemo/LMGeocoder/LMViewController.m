@@ -75,21 +75,18 @@
     self.latitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.latitude];
     self.longitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.longitude];
     
-    dispatch_async(dispatch_queue_create("A", NULL), ^{
-        [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
-                                                      service:kLMGeocoderGoogleService
-                                            completionHandler:^(LMAddress *address, NSError *error) {
-                                                if (address && !error) {
-                                                    
-                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                        self.addressLabel.text = address.formattedAddress;
-                                                        [self.addressLabel sizeToFit];
-                                                    });
-                                                    
-                                                }
-                                            }];
-    });
-    
+    [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
+                                                  service:kLMGeocoderGoogleService
+                                        completionHandler:^(LMAddress *address, NSError *error) {
+                                            if (address && !error) {
+                                                self.addressLabel.text = address.formattedAddress;
+                                            }
+                                            else {
+                                                self.addressLabel.text = [error localizedDescription];
+                                            }
+                                            
+                                            [self.addressLabel sizeToFit];
+                                        }];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

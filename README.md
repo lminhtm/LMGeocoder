@@ -17,29 +17,29 @@ Import the `LMGeocoder.h` header (see sample Xcode project in `/LMGeocoderDemo`)
 #### Geocoding
 ```ObjC
 [[LMGeocoder sharedInstance] geocodeAddressString:addressString
-service:kLMGeocoderGoogleService
-completionHandler:^(LMAddress *address, NSError *error) {
-if (address && !error) {
-NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
-}
-else {
-NSLog(@"Error: %@", error.description);
-}
-}];
+                                          service:kLMGeocoderGoogleService
+                                completionHandler:^(LMAddress *address, NSError *error) {
+                                    if (address && !error) {
+                                        NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
+                                    }
+                                    else {
+                                        NSLog(@"Error: %@", error.description);
+                                    }
+                                }];
 ```
 
 #### Reverse Geocoding
 ```ObjC
 [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
-service:kLMGeocoderGoogleService
-completionHandler:^(LMAddress *address, NSError *error) {
-if (address && !error) {
-NSLog(@"Address: %@", address.formattedAddress);
-}
-else {
-NSLog(@"Error: %@", error.description);
-}
-}];
+                                              service:kLMGeocoderGoogleService
+                                    completionHandler:^(LMAddress *address, NSError *error) {
+                                        if (address && !error) {
+                                            NSLog(@"Address: %@", address.formattedAddress);
+                                        }
+                                        else {
+                                            NSLog(@"Error: %@", error.description);
+                                        }
+                                    }];
 ```
 
 ## License
