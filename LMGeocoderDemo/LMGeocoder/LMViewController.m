@@ -7,11 +7,20 @@
 //
 
 #import "LMViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import <AVFoundation/AVFoundation.h>
+#import "LMAddress.h"
+#import "LMGeocoder.h"
 
-@interface LMViewController ()
-{
-    CLLocationManager *locationManager;
-}
+@interface LMViewController () <CLLocationManagerDelegate>
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) IBOutlet UILabel *latitudeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *longitudeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+
 @end
 
 @implementation LMViewController
@@ -23,14 +32,18 @@
     [super viewDidLoad];
     
     // Start getting current location
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [locationManager startUpdatingLocation];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
     
     // Show camera on real device for nice effect
     BOOL hasCamera = ([[AVCaptureDevice devices] count] > 0);
-    if (hasCamera) {
+    if (hasCamera)
+    {
         AVCaptureSession *session = [[AVCaptureSession alloc] init];
         session.sessionPreset = AVCaptureSessionPresetHigh;
         
@@ -45,11 +58,11 @@
         [session addInput:input];
         [session startRunning];
     }
-    else {
+    else
+    {
         self.backgroundImageView.image = [UIImage imageNamed:@"background"];
     }
 }
-
 
 
 #pragma mark - LOCATION MANAGER
@@ -62,14 +75,21 @@
     self.latitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.latitude];
     self.longitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.longitude];
     
-    [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
-                                                  service:kLMGeocoderGoogleService
-                                        completionHandler:^(LMAddress *address, NSError *error) {
-                                            if (address && !error) {
-                                                self.addressLabel.text = address.formattedAddress;
-                                                [self.addressLabel sizeToFit];
-                                            }
-                                        }];
+    dispatch_async(dispatch_queue_create("A", NULL), ^{
+        [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
+                                                      service:kLMGeocoderGoogleService
+                                            completionHandler:^(LMAddress *address, NSError *error) {
+                                                if (address && !error) {
+                                                    
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                        self.addressLabel.text = address.formattedAddress;
+                                                        [self.addressLabel sizeToFit];
+                                                    });
+                                                    
+                                                }
+                                            }];
+    });
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

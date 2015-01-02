@@ -44,7 +44,6 @@
 }
 
 
-
 #pragma mark - GEOCODING
 
 - (void)geocodeAddressString:(NSString *)addressString
@@ -56,26 +55,32 @@
     completionHandler = handler;
     currentService = service;
     
-    if (requestedAddress == nil || requestedAddress.length == 0) {
+    if (requestedAddress == nil || requestedAddress.length == 0)
+    {
         // Invalid address string, so return
-        NSError *error = [NSError errorWithDomain:@"LMMapKitError" code:kLMGeocoderErrorInvalidAddressString userInfo:nil];
+        NSError *error = [NSError errorWithDomain:@"LMGeocoderError"
+                                             code:kLMGeocoderErrorInvalidAddressString
+                                         userInfo:nil];
         
         if (completionHandler) {
             completionHandler(nil, error);
         }
     }
-    else {
-        if (currentService == kLMGeocoderGoogleService) {
+    else
+    {
+        if (currentService == kLMGeocoderGoogleService)
+        {
             // Build url string using address query
             NSString *urlString = kGoogleAPIGeocodingURL(requestedAddress);
             
             // Build connection from this url string
             [self buildConnectionFromURLString:urlString];
         }
-        else {
+        else
+        {
             CLGeocoder *geocoder = [[CLGeocoder alloc] init];
             [geocoder geocodeAddressString:requestedAddress completionHandler:^(NSArray *placemarks, NSError *error) {
-                if (!error) {
+                if (!error && placemarks) {
                     [self parseGeocodingResultData:placemarks];
                 }
                 else {
@@ -89,7 +94,6 @@
 }
 
 
-
 #pragma mark - REVERSE GEOCODING
 
 - (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate
@@ -101,28 +105,34 @@
     completionHandler = handler;
     currentService = service;
     
-    if (!CLLocationCoordinate2DIsValid(requestedCoordinate)) {
+    if (!CLLocationCoordinate2DIsValid(requestedCoordinate))
+    {
         // Invalid location coordinate, so return
-        NSError *error = [NSError errorWithDomain:@"LMMapKitError" code:kLMGeocoderErrorInvalidCoordinate userInfo:nil];
+        NSError *error = [NSError errorWithDomain:@"LMGeocoderError"
+                                             code:kLMGeocoderErrorInvalidCoordinate
+                                         userInfo:nil];
         
         if (completionHandler) {
             completionHandler(nil, error);
         }
     }
-    else {
-        if (currentService == kLMGeocoderGoogleService) {
+    else
+    {
+        if (currentService == kLMGeocoderGoogleService)
+        {
             // Build url string using coordinate
             NSString *urlString = kGoogleAPIReverseGeocodingURL(requestedCoordinate.latitude, requestedCoordinate.longitude);
             
             // Build connection from this url string
             [self buildConnectionFromURLString:urlString];
         }
-        else {
+        else
+        {
             CLLocation *location = [[CLLocation alloc] initWithLatitude:requestedCoordinate.latitude
                                                               longitude:requestedCoordinate.longitude];
             CLGeocoder *geocoder = [[CLGeocoder alloc] init];
             [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-                 if (!error) {
+                 if (!error && placemarks) {
                      [self parseGeocodingResultData:placemarks];
                  }
                  else {
@@ -134,7 +144,6 @@
         }
     }
 }
-
 
 
 #pragma mark - CONNECTION STUFF
@@ -160,7 +169,9 @@
     }
     else {
         // Connection failed, so return
-        NSError *error = [NSError errorWithDomain:@"LMMapKitError" code:kLMGeocoderErrorInternal userInfo:nil];
+        NSError *error = [NSError errorWithDomain:@"LMGeocoderError"
+                                             code:kLMGeocoderErrorInternal
+                                         userInfo:nil];
         
         if (completionHandler) {
             completionHandler(nil, error);
@@ -199,27 +210,25 @@
  */
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	// Get result string
-	NSString *resultString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-    
-	// Parse result string to JSON
-	NSDictionary *resultDict = [resultString JSONValue];
+    // Parse result string to JSON
+    NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
     
     // Parse JSON data to LMAddress
-	[self parseGeocodingResultData:resultDict];
+    [self parseGeocodingResultData:resultDict];
 }
-
 
 
 #pragma mark - PARSE RESULT DATA
 
 - (void)parseGeocodingResultData:(id)resultData
 {
-    if (currentService == kLMGeocoderGoogleService) {
+    if (currentService == kLMGeocoderGoogleService)
+    {
         NSDictionary *resultDict = (NSDictionary *)resultData;
         
         NSString *status = [resultDict valueForKey:@"status"];
-        if ([status isEqualToString:@"OK"]) {
+        if ([status isEqualToString:@"OK"])
+        {
             NSDictionary *locationDict = [[resultDict objectForKey:@"results"] objectAtIndex:0];
             NSArray *addressComponents = [locationDict objectForKey:@"address_components"];
             NSString *formattedAddress = [locationDict objectForKey:@"formatted_address"];
@@ -241,15 +250,19 @@
                 completionHandler(resultAddress, nil);
             }
         }
-        else {
-            NSError *error = [NSError errorWithDomain:@"LMMapKitError" code:kLMGeocoderErrorInternal userInfo:nil];
+        else
+        {
+            NSError *error = [NSError errorWithDomain:@"LMGeocoderError"
+                                                 code:kLMGeocoderErrorInternal
+                                             userInfo:nil];
             
             if (completionHandler) {
                 completionHandler(nil, error);
             }
         }
     }
-    else {
+    else
+    {
         NSArray *placemarks = (NSArray *)resultData;
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         NSArray *lines = placemark.addressDictionary[@"FormattedAddressLines"];
