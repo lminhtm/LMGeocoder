@@ -10,17 +10,18 @@
 
 #define kGoogleAPIReverseGeocodingURL(lat, lng) [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&sensor=true", lat, lng];
 #define kGoogleAPIGeocodingURL(address)         [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", address];
-
 #define kTimeoutInterval 60
 
 @interface LMGeocoder ()
-{
-    CLLocationCoordinate2D requestedCoordinate;
-    NSString *requestedAddress;
-    LMGeocodeCallback completionHandler;
-    LMGeocoderService currentService;
-    BOOL isReverseGeocoding;
-}
+
+@property (assign, nonatomic) BOOL isReverseGeocoding;
+@property (assign, nonatomic) LMGeocoderService currentService;
+
+@property (assign, nonatomic) CLLocationCoordinate2D requestedCoordinate;
+@property (strong, nonatomic) NSString *requestedAddress;
+@property (strong, nonatomic) LMGeocodeCallback completionHandler;
+@property (strong, nonatomic) CLGeocoder *appleGeocoder;
+
 @end
 
 @implementation LMGeocoder
@@ -40,6 +41,7 @@
 {
     self = [super init];
     if (self != nil) {
+        self.appleGeocoder = [[CLGeocoder alloc] init];
     }
     return self;
 }
@@ -51,45 +53,46 @@
                      service:(LMGeocoderService)service
            completionHandler:(LMGeocodeCallback)handler
 {
-    isReverseGeocoding = NO;
-    requestedAddress = addressString;
-    completionHandler = handler;
-    currentService = service;
+    self.isReverseGeocoding = NO;
+    self.requestedAddress = addressString;
+    self.completionHandler = handler;
+    self.currentService = service;
     
-    if (requestedAddress == nil || requestedAddress.length == 0)
+    if (self.requestedAddress == nil || self.requestedAddress.length == 0)
     {
         // Invalid address string, so return
         NSError *error = [NSError errorWithDomain:@"LMGeocoderError"
                                              code:kLMGeocoderErrorInvalidAddressString
                                          userInfo:nil];
         
-        if (completionHandler) {
-            completionHandler(nil, error);
+        if (self.completionHandler) {
+            self.completionHandler(nil, error);
         }
     }
     else
     {
-        if (currentService == kLMGeocoderGoogleService)
+        if (self.currentService == kLMGeocoderGoogleService)
         {
             // Build url string using address query
-            NSString *urlString = kGoogleAPIGeocodingURL(requestedAddress);
+            NSString *urlString = kGoogleAPIGeocodingURL(self.requestedAddress);
             
             // Build connection from this url string
             [self buildConnectionFromURLString:urlString];
         }
         else
         {
-            CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-            [geocoder geocodeAddressString:requestedAddress completionHandler:^(NSArray *placemarks, NSError *error) {
-                if (!error && placemarks) {
-                    [self parseGeocodingResultData:placemarks];
-                }
-                else {
-                    if (completionHandler) {
-                        completionHandler(nil, error);
-                    }
-                }
-            }];
+            [self.appleGeocoder geocodeAddressString:self.requestedAddress
+                                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                                       
+                                       if (!error && placemarks) {
+                                           [self parseGeocodingResultData:placemarks];
+                                       }
+                                       else {
+                                           if (self.completionHandler) {
+                                               self.completionHandler(nil, error);
+                                           }
+                                       }
+                                   }];
         }
     }
 }
@@ -101,47 +104,48 @@
                          service:(LMGeocoderService)service
                completionHandler:(LMGeocodeCallback)handler
 {
-    isReverseGeocoding = YES;
-    requestedCoordinate = coordinate;
-    completionHandler = handler;
-    currentService = service;
+    self.isReverseGeocoding = YES;
+    self.requestedCoordinate = coordinate;
+    self.completionHandler = handler;
+    self.currentService = service;
     
-    if (!CLLocationCoordinate2DIsValid(requestedCoordinate))
+    if (!CLLocationCoordinate2DIsValid(self.requestedCoordinate))
     {
         // Invalid location coordinate, so return
         NSError *error = [NSError errorWithDomain:@"LMGeocoderError"
                                              code:kLMGeocoderErrorInvalidCoordinate
                                          userInfo:nil];
         
-        if (completionHandler) {
-            completionHandler(nil, error);
+        if (self.completionHandler) {
+            self.completionHandler(nil, error);
         }
     }
     else
     {
-        if (currentService == kLMGeocoderGoogleService)
+        if (self.currentService == kLMGeocoderGoogleService)
         {
             // Build url string using coordinate
-            NSString *urlString = kGoogleAPIReverseGeocodingURL(requestedCoordinate.latitude, requestedCoordinate.longitude);
+            NSString *urlString = kGoogleAPIReverseGeocodingURL(self.requestedCoordinate.latitude, self.requestedCoordinate.longitude);
             
             // Build connection from this url string
             [self buildConnectionFromURLString:urlString];
         }
         else
         {
-            CLLocation *location = [[CLLocation alloc] initWithLatitude:requestedCoordinate.latitude
-                                                              longitude:requestedCoordinate.longitude];
-            CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-            [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-                 if (!error && placemarks) {
-                     [self parseGeocodingResultData:placemarks];
-                 }
-                 else {
-                     if (completionHandler) {
-                         completionHandler(nil, error);
-                     }
-                 }
-             }];
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:self.requestedCoordinate.latitude
+                                                              longitude:self.requestedCoordinate.longitude];
+            [self.appleGeocoder reverseGeocodeLocation:location
+                                     completionHandler:^(NSArray *placemarks, NSError *error) {
+                                         
+                                         if (!error && placemarks) {
+                                             [self parseGeocodingResultData:placemarks];
+                                         }
+                                         else {
+                                             if (self.completionHandler) {
+                                                 self.completionHandler(nil, error);
+                                             }
+                                         }
+                                     }];
         }
     }
 }
@@ -149,78 +153,66 @@
 
 #pragma mark - CONNECTION STUFF
 
-/**
- * Build a connection from URL string
- */
 - (void)buildConnectionFromURLString:(NSString *)urlString
 {
-    // Build request URL
     NSURL *requestURL = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
     [request setTimeoutInterval:kTimeoutInterval];
-
     
-    //Available since iOS5, Changed from delegate to blocks
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *reponse, NSData *data, NSError *error) {
-        
-        
-        if (!error) {
-            
-            NSError *err = nil;
-            //Available since iOS5, no need for SBJSON
-            id resultDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
-            
-            if (!err) {
-                
-                // Parse JSON data to LMAddress
-                [self parseGeocodingResultData:resultDict];
-                
-            }
-            
-            else{
-                
-                if (completionHandler) {
-                    completionHandler(nil, error);
-                }
-            }
-            
-        }
-        else{
-            
-            if (completionHandler) {
-                completionHandler(nil, error);
-            }
-        }
-    }];
-    
-    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *reponse, NSData *data, NSError *error) {
+                               
+                               if (!error)
+                               {
+                                   NSError *err = nil;
+                                   id resultDict = [NSJSONSerialization JSONObjectWithData:data
+                                                                                   options:NSJSONReadingAllowFragments
+                                                                                     error:&err];
+                                   
+                                   if (!err && resultDict) {
+                                       // Parse JSON data to LMAddress
+                                       [self parseGeocodingResultData:resultDict];
+                                   }
+                                   else {
+                                       if (self.completionHandler) {
+                                           self.completionHandler(nil, error);
+                                       }
+                                   }
+                               }
+                               else
+                               {
+                                   if (self.completionHandler) {
+                                       self.completionHandler(nil, error);
+                                   }
+                               }
+                           }];
 }
-
 
 
 #pragma mark - PARSE RESULT DATA
 
 - (void)parseGeocodingResultData:(id)resultData
 {
-    
-    LMAddress *resultAddress = [[LMAddress alloc] initWithLocationData:resultData forServiceType:currentService];
-    
-    if (resultAddress.isValid) {
-
-        if (completionHandler) completionHandler(resultAddress, nil);
-        
-        
-    }else{
-    
-        NSError *error = [NSError errorWithDomain:@"LMMapKitError" code:kLMGeocoderErrorInternal userInfo:nil];
-        
-        if (completionHandler) completionHandler(nil, error);
-        
+    LMAddress *resultAddress = [[LMAddress alloc] initWithLocationData:resultData
+                                                        forServiceType:self.currentService];
+    if (resultAddress.isValid)
+    {
+        if (self.completionHandler) {
+            self.completionHandler(resultAddress, nil);
+        }
     }
-    
-    
+    else
+    {
+        NSError *error = [NSError errorWithDomain:@"LMGeocoderError"
+                                             code:kLMGeocoderErrorInternal
+                                         userInfo:nil];
+        
+        if (self.completionHandler) {
+            self.completionHandler(nil, error);
+        }
+    }
 }
-
 
 @end

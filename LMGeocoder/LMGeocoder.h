@@ -9,33 +9,39 @@
 #import <Foundation/Foundation.h>
 #import "LMAddress.h"
 
-/** LMReverseGeocoder service API. */
-typedef NS_ENUM(NSInteger, LMGeocoderService) {
+/*!
+ *  LMReverseGeocoder service API
+ */
+typedef NS_ENUM(NSInteger, LMGeocoderService){
     kLMGeocoderGoogleService = 1,
     kLMGeocoderAppleService,
 };
 
-/** LMReverseGeocoder error codes, embedded in NSError. */
-typedef NS_ENUM(NSInteger, LMGeocoderErrorCode) {
+/*!
+ *  LMReverseGeocoder error codes, embedded in NSError
+ */
+typedef NS_ENUM(NSInteger, LMGeocoderErrorCode){
     kLMGeocoderErrorInvalidCoordinate = 1,
     kLMGeocoderErrorInvalidAddressString,
     kLMGeocoderErrorInternal,
 };
 
-/** Handler that reports a geocoding response, or error. */
+/*!
+ *  Handler that reports a geocoding response, or error
+ */
 typedef void (^LMGeocodeCallback) (LMAddress *address, NSError *error);
 
-/**
+/*!
  * Exposes a service for geocoding and reverse geocoding. 
  */
 @interface LMGeocoder : NSObject <NSURLConnectionDelegate>
 
-/**
+/*!
  Get shared instance
  */
 + (LMGeocoder *)sharedInstance;
 
-/**
+/*!
  * Geocodes an address to coordinate.
  *
  * @param addressString The address string to geocode.
@@ -47,7 +53,7 @@ typedef void (^LMGeocodeCallback) (LMAddress *address, NSError *error);
                      service:(LMGeocoderService)service
            completionHandler:(LMGeocodeCallback)handler;
 
-/**
+/*!
  * Reverse geocodes a coordinate on the Earth's surface.
  *
  * @param coordinate The coordinate to reverse geocode.

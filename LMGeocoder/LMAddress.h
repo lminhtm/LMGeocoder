@@ -11,38 +11,57 @@
 
 @interface LMAddress : NSObject
 
-/** The location coordinate. */
+/*!
+*  The location coordinate
+*/
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
-/** The precise street address. */
+/*!
+ *  The precise street address
+ */
 @property (nonatomic, copy) NSString *streetNumber;
 
-/** The named route. */
+/*!
+ *  The named route
+ */
 @property (nonatomic, copy) NSString *route;
 
-/** The incorporated city or town political entity. */
+/*!
+ *  The incorporated city or town political entity
+ */
 @property (nonatomic, copy) NSString *locality;
 
-/** The first-order civil entity below a locality. */
+/*!
+ *  The first-order civil entity below a localit
+ */
 @property (nonatomic, copy) NSString *subLocality;
 
-/** The civil entity below the country level. */
+/*!
+ *  The civil entity below the country level
+ */
 @property (nonatomic, copy) NSString *administrativeArea;
 
-/** The Postal/Zip code. */
+/*!
+ *  The Postal/Zip code
+ */
 @property (nonatomic, copy) NSString *postalCode;
 
-/** The country name. */
+/*!
+ *  The country name
+ */
 @property (nonatomic, copy) NSString *country;
 
-/** The formatted address. */
+/*!
+ *  The formatted address
+ */
 @property (nonatomic, copy) NSString *formattedAddress;
-/**
+
+/*!
  *  Response from server is usable
  */
-@property (assign)BOOL isValid;
+@property (nonatomic, assign) BOOL isValid;
 
-/**
+/*!
  *  Initialize with response from server
  *
  *  @param locationData response object recieved from server
@@ -50,6 +69,6 @@
  *
  *  @return object with all data set for use
  */
--(id)initWithLocationData:(id)locationData forServiceType:(int)serviceType;
+- (id)initWithLocationData:(id)locationData forServiceType:(int)serviceType;
 
 @end
