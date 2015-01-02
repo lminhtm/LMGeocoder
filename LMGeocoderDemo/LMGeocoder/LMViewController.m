@@ -78,6 +78,7 @@
     [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
                                                   service:kLMGeocoderGoogleService
                                         completionHandler:^(LMAddress *address, NSError *error) {
+                                            
                                             if (address && !error) {
                                                 self.addressLabel.text = address.formattedAddress;
                                             }

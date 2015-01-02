@@ -13,7 +13,7 @@ s.author            = {
 }
 s.source            = {
 :git => 'https://github.com/lminhtm/LMGeocoder.git',
-:tag => 'master'
+:tag => s.version.to_s
 }
 s.source_files      = 'LMGeocoder/*.{m,h}'
 s.requires_arc      = true

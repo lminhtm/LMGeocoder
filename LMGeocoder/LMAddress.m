@@ -34,7 +34,7 @@
 
 - (id)initWithLocationData:(id)locationData forServiceType:(int)serviceType
 {
-    self = [super init];
+    self = [self init];
     if (self) {
         if (serviceType == 1) {
             [self setGoogleLocationData:locationData];
@@ -57,6 +57,8 @@
     
     if (lines && [lines count])
     {
+        self.isValid = YES;
+        
         self.coordinate = placemark.location.coordinate;
         self.streetNumber = placemark.thoroughfare;
         self.locality = placemark.locality;
@@ -79,6 +81,8 @@
     
     if ([status isEqualToString:@"OK"])
     {
+        self.isValid = YES;
+        
         NSDictionary *locationDict = [[resultDict objectForKey:@"results"] objectAtIndex:0];
         NSArray *addressComponents = [locationDict objectForKey:@"address_components"];
         NSString *formattedAddrs = [locationDict objectForKey:@"formatted_address"];
