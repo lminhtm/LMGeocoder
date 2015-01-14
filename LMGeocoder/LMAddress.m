@@ -20,6 +20,7 @@
 @synthesize country;
 @synthesize formattedAddress;
 @synthesize isValid;
+@synthesize ISOcountryCode;
 
 #pragma mark - INIT
 
@@ -66,6 +67,7 @@
         self.administrativeArea = placemark.administrativeArea;
         self.postalCode = placemark.postalCode;
         self.country = placemark.country;
+        self.ISOcountryCode = placemark.ISOcountryCode;
         self.formattedAddress = [lines componentsJoinedByString:@", "];
     }
     else
@@ -97,6 +99,7 @@
         self.administrativeArea = [self component:@"administrative_area_level_1" inArray:addressComponents ofType:@"long_name"];
         self.postalCode = [self component:@"postal_code" inArray:addressComponents ofType:@"short_name"];
         self.country = [self component:@"country" inArray:addressComponents ofType:@"long_name"];
+        self.ISOcountryCode = [self component:@"country" inArray:addressComponents ofType:@"short_name"];
         self.formattedAddress = formattedAddrs;
     }
     else

@@ -52,6 +52,11 @@
 @property (nonatomic, copy) NSString *country;
 
 /*!
+ *  The ISO country code (e.g. AU)
+ */
+@property (nonatomic, copy) NSString *ISOcountryCode;
+
+/*!
  *  The formatted address
  */
 @property (nonatomic, copy) NSString *formattedAddress;
