@@ -1,339 +1,1059 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		62C9435A193AEC5300A929FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C94359193AEC5300A929FD /* Foundation.framework */; };
-		62C9435C193AEC5300A929FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C9435B193AEC5300A929FD /* CoreGraphics.framework */; };
-		62C9435E193AEC5300A929FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C9435D193AEC5300A929FD /* UIKit.framework */; };
-		62C94364193AEC5300A929FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62C94362193AEC5300A929FD /* InfoPlist.strings */; };
-		62C94366193AEC5300A929FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C94365193AEC5300A929FD /* main.m */; };
-		62C9436A193AEC5300A929FD /* LMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C94369193AEC5300A929FD /* LMAppDelegate.m */; };
-		62C94370193AEC5300A929FD /* LMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C9436F193AEC5300A929FD /* LMViewController.m */; };
-		62C94372193AEC5300A929FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C94371193AEC5300A929FD /* Images.xcassets */; };
-		62C94393193AF00100A929FD /* LMAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C94390193AF00100A929FD /* LMAddress.m */; };
-		62C94394193AF00100A929FD /* LMGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C94392193AF00100A929FD /* LMGeocoder.m */; };
-		62C943A7193B25CF00A929FD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C943A6193B25CF00A929FD /* CoreLocation.framework */; };
-		62C943A9193B316200A929FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C943A8193B316200A929FD /* AVFoundation.framework */; };
-		62C943AB193B338100A929FD /* LMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C943AA193B338100A929FD /* LMViewController.xib */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		62C94356193AEC5300A929FD /* LMGeocoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMGeocoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		62C94359193AEC5300A929FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		62C9435B193AEC5300A929FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		62C9435D193AEC5300A929FD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		62C94361193AEC5300A929FD /* LMGeocoder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LMGeocoder-Info.plist"; sourceTree = "<group>"; };
-		62C94363193AEC5300A929FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		62C94365193AEC5300A929FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		62C94367193AEC5300A929FD /* LMGeocoder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LMGeocoder-Prefix.pch"; sourceTree = "<group>"; };
-		62C94368193AEC5300A929FD /* LMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMAppDelegate.h; sourceTree = "<group>"; };
-		62C94369193AEC5300A929FD /* LMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMAppDelegate.m; sourceTree = "<group>"; };
-		62C9436E193AEC5300A929FD /* LMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMViewController.h; sourceTree = "<group>"; };
-		62C9436F193AEC5300A929FD /* LMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMViewController.m; sourceTree = "<group>"; };
-		62C94371193AEC5300A929FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		62C9438F193AF00100A929FD /* LMAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAddress.h; sourceTree = "<group>"; };
-		62C94390193AF00100A929FD /* LMAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAddress.m; sourceTree = "<group>"; };
-		62C94391193AF00100A929FD /* LMGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMGeocoder.h; sourceTree = "<group>"; };
-		62C94392193AF00100A929FD /* LMGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMGeocoder.m; sourceTree = "<group>"; };
-		62C943A6193B25CF00A929FD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		62C943A8193B316200A929FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		62C943AA193B338100A929FD /* LMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMViewController.xib; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		62C94353193AEC5300A929FD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62C943A9193B316200A929FD /* AVFoundation.framework in Frameworks */,
-				62C943A7193B25CF00A929FD /* CoreLocation.framework in Frameworks */,
-				62C9435C193AEC5300A929FD /* CoreGraphics.framework in Frameworks */,
-				62C9435E193AEC5300A929FD /* UIKit.framework in Frameworks */,
-				62C9435A193AEC5300A929FD /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		62C9434D193AEC5300A929FD = {
-			isa = PBXGroup;
-			children = (
-				62C9435F193AEC5300A929FD /* LMGeocoder */,
-				62C94358193AEC5300A929FD /* Frameworks */,
-				62C94357193AEC5300A929FD /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		62C94357193AEC5300A929FD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				62C94356193AEC5300A929FD /* LMGeocoder.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		62C94358193AEC5300A929FD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				62C943A8193B316200A929FD /* AVFoundation.framework */,
-				62C943A6193B25CF00A929FD /* CoreLocation.framework */,
-				62C94359193AEC5300A929FD /* Foundation.framework */,
-				62C9435B193AEC5300A929FD /* CoreGraphics.framework */,
-				62C9435D193AEC5300A929FD /* UIKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		62C9435F193AEC5300A929FD /* LMGeocoder */ = {
-			isa = PBXGroup;
-			children = (
-				62C94368193AEC5300A929FD /* LMAppDelegate.h */,
-				62C94369193AEC5300A929FD /* LMAppDelegate.m */,
-				62C9436E193AEC5300A929FD /* LMViewController.h */,
-				62C9436F193AEC5300A929FD /* LMViewController.m */,
-				62C943AA193B338100A929FD /* LMViewController.xib */,
-				62C9438E193AEDFC00A929FD /* LMGeocoder */,
-				62C94360193AEC5300A929FD /* Supporting Files */,
-			);
-			path = LMGeocoder;
-			sourceTree = "<group>";
-		};
-		62C94360193AEC5300A929FD /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				62C94371193AEC5300A929FD /* Images.xcassets */,
-				62C94361193AEC5300A929FD /* LMGeocoder-Info.plist */,
-				62C94362193AEC5300A929FD /* InfoPlist.strings */,
-				62C94365193AEC5300A929FD /* main.m */,
-				62C94367193AEC5300A929FD /* LMGeocoder-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		62C9438E193AEDFC00A929FD /* LMGeocoder */ = {
-			isa = PBXGroup;
-			children = (
-				62C9438F193AF00100A929FD /* LMAddress.h */,
-				62C94390193AF00100A929FD /* LMAddress.m */,
-				62C94391193AF00100A929FD /* LMGeocoder.h */,
-				62C94392193AF00100A929FD /* LMGeocoder.m */,
-			);
-			name = LMGeocoder;
-			path = ../../LMGeocoder;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		62C94355193AEC5300A929FD /* LMGeocoder */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 62C94388193AEC5300A929FD /* Build configuration list for PBXNativeTarget "LMGeocoder" */;
-			buildPhases = (
-				62C94352193AEC5300A929FD /* Sources */,
-				62C94353193AEC5300A929FD /* Frameworks */,
-				62C94354193AEC5300A929FD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = LMGeocoder;
-			productName = LMGeocoder;
-			productReference = 62C94356193AEC5300A929FD /* LMGeocoder.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		62C9434E193AEC5300A929FD /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = LM;
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = LMinh;
-			};
-			buildConfigurationList = 62C94351193AEC5300A929FD /* Build configuration list for PBXProject "LMGeocoder" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 62C9434D193AEC5300A929FD;
-			productRefGroup = 62C94357193AEC5300A929FD /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				62C94355193AEC5300A929FD /* LMGeocoder */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		62C94354193AEC5300A929FD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62C94372193AEC5300A929FD /* Images.xcassets in Resources */,
-				62C943AB193B338100A929FD /* LMViewController.xib in Resources */,
-				62C94364193AEC5300A929FD /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		62C94352193AEC5300A929FD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62C94366193AEC5300A929FD /* main.m in Sources */,
-				62C94393193AF00100A929FD /* LMAddress.m in Sources */,
-				62C94394193AF00100A929FD /* LMGeocoder.m in Sources */,
-				62C9436A193AEC5300A929FD /* LMAppDelegate.m in Sources */,
-				62C94370193AEC5300A929FD /* LMViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		62C94362193AEC5300A929FD /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				62C94363193AEC5300A929FD /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		62C94386193AEC5300A929FD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		62C94387193AEC5300A929FD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		62C94389193AEC5300A929FD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LMGeocoder/LMGeocoder-Prefix.pch";
-				INFOPLIST_FILE = "LMGeocoder/LMGeocoder-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		62C9438A193AEC5300A929FD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LMGeocoder/LMGeocoder-Prefix.pch";
-				INFOPLIST_FILE = "LMGeocoder/LMGeocoder-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		62C94351193AEC5300A929FD /* Build configuration list for PBXProject "LMGeocoder" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62C94386193AEC5300A929FD /* Debug */,
-				62C94387193AEC5300A929FD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		62C94388193AEC5300A929FD /* Build configuration list for PBXNativeTarget "LMGeocoder" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62C94389193AEC5300A929FD /* Debug */,
-				62C9438A193AEC5300A929FD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 62C9434E193AEC5300A929FD /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>62C9434D193AEC5300A929FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C9435F193AEC5300A929FD</string>
+				<string>66491C081A678B0E00E461C2</string>
+				<string>62C94358193AEC5300A929FD</string>
+				<string>62C94357193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C9434E193AEC5300A929FD</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>LM</string>
+				<key>LastUpgradeCheck</key>
+				<string>0510</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>LMinh</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>66491C061A678B0E00E461C2</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.1.1</string>
+						<key>TestTargetID</key>
+						<string>62C94355193AEC5300A929FD</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>62C94351193AEC5300A929FD</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>62C9434D193AEC5300A929FD</string>
+			<key>productRefGroup</key>
+			<string>62C94357193AEC5300A929FD</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>62C94355193AEC5300A929FD</string>
+				<string>66491C061A678B0E00E461C2</string>
+			</array>
+		</dict>
+		<key>62C94351193AEC5300A929FD</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>62C94386193AEC5300A929FD</string>
+				<string>62C94387193AEC5300A929FD</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>62C94352193AEC5300A929FD</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>62C94366193AEC5300A929FD</string>
+				<string>62C94393193AF00100A929FD</string>
+				<string>62C94394193AF00100A929FD</string>
+				<string>62C9436A193AEC5300A929FD</string>
+				<string>62C94370193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C94353193AEC5300A929FD</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>62C943A9193B316200A929FD</string>
+				<string>62C943A7193B25CF00A929FD</string>
+				<string>62C9435C193AEC5300A929FD</string>
+				<string>62C9435E193AEC5300A929FD</string>
+				<string>62C9435A193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C94354193AEC5300A929FD</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>62C94372193AEC5300A929FD</string>
+				<string>62C943AB193B338100A929FD</string>
+				<string>62C94364193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C94355193AEC5300A929FD</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>62C94388193AEC5300A929FD</string>
+			<key>buildPhases</key>
+			<array>
+				<string>62C94352193AEC5300A929FD</string>
+				<string>62C94353193AEC5300A929FD</string>
+				<string>62C94354193AEC5300A929FD</string>
+				<string>E1865CDD10A6A3AE45C82CF0</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>LMGeocoder</string>
+			<key>productName</key>
+			<string>LMGeocoder</string>
+			<key>productReference</key>
+			<string>62C94356193AEC5300A929FD</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>62C94356193AEC5300A929FD</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>LMGeocoder.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>62C94357193AEC5300A929FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C94356193AEC5300A929FD</string>
+				<string>66491C071A678B0E00E461C2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94358193AEC5300A929FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C943A8193B316200A929FD</string>
+				<string>62C943A6193B25CF00A929FD</string>
+				<string>62C94359193AEC5300A929FD</string>
+				<string>62C9435B193AEC5300A929FD</string>
+				<string>62C9435D193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94359193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>62C9435A193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C94359193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C9435B193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>62C9435C193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C9435B193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C9435D193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>62C9435E193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C9435D193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C9435F193AEC5300A929FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C94368193AEC5300A929FD</string>
+				<string>62C94369193AEC5300A929FD</string>
+				<string>62C9436E193AEC5300A929FD</string>
+				<string>62C9436F193AEC5300A929FD</string>
+				<string>62C943AA193B338100A929FD</string>
+				<string>62C9438E193AEDFC00A929FD</string>
+				<string>62C94360193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>LMGeocoder</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94360193AEC5300A929FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C94371193AEC5300A929FD</string>
+				<string>62C94361193AEC5300A929FD</string>
+				<string>62C94362193AEC5300A929FD</string>
+				<string>62C94365193AEC5300A929FD</string>
+				<string>62C94367193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94361193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>LMGeocoder-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94362193AEC5300A929FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C94363193AEC5300A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94363193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94364193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C94362193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C94365193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94366193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C94365193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C94367193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>LMGeocoder-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94368193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>LMAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94369193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>LMAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C9436A193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C94369193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C9436E193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>LMViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C9436F193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>LMViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94370193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C9436F193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C94371193AEC5300A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94372193AEC5300A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C94371193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C94386193AEC5300A929FD</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>62C94387193AEC5300A929FD</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>62C94388193AEC5300A929FD</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>62C94389193AEC5300A929FD</string>
+				<string>62C9438A193AEC5300A929FD</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>62C94389193AEC5300A929FD</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>LMGeocoder/LMGeocoder-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>LMGeocoder/LMGeocoder-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>62C9438A193AEC5300A929FD</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>LMGeocoder/LMGeocoder-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>LMGeocoder/LMGeocoder-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>62C9438E193AEDFC00A929FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C9438F193AF00100A929FD</string>
+				<string>62C94390193AF00100A929FD</string>
+				<string>62C94391193AF00100A929FD</string>
+				<string>62C94392193AF00100A929FD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>LMGeocoder</string>
+			<key>path</key>
+			<string>../../LMGeocoder</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C9438F193AF00100A929FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>LMAddress.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94390193AF00100A929FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>LMAddress.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94391193AF00100A929FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>LMGeocoder.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94392193AF00100A929FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>LMGeocoder.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C94393193AF00100A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C94390193AF00100A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C94394193AF00100A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C94392193AF00100A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C943A6193B25CF00A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreLocation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreLocation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>62C943A7193B25CF00A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C943A6193B25CF00A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C943A8193B316200A929FD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>AVFoundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/AVFoundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>62C943A9193B316200A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C943A8193B316200A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C943AA193B338100A929FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>LMViewController.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C943AB193B338100A929FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C943AA193B338100A929FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>66491C031A678B0E00E461C2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>66491C0C1A678B0E00E461C2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>66491C041A678B0E00E461C2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>66491C051A678B0E00E461C2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>66491C061A678B0E00E461C2</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>66491C111A678B0E00E461C2</string>
+			<key>buildPhases</key>
+			<array>
+				<string>66491C031A678B0E00E461C2</string>
+				<string>66491C041A678B0E00E461C2</string>
+				<string>66491C051A678B0E00E461C2</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>66491C0E1A678B0E00E461C2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>LMGeocoder Tests</string>
+			<key>productName</key>
+			<string>LMGeocoder Tests</string>
+			<key>productReference</key>
+			<string>66491C071A678B0E00E461C2</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>66491C071A678B0E00E461C2</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>LMGeocoder Tests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>66491C081A678B0E00E461C2</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>66491C0B1A678B0E00E461C2</string>
+				<string>66491C091A678B0E00E461C2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>LMGeocoder Tests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>66491C091A678B0E00E461C2</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>66491C0A1A678B0E00E461C2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>66491C0A1A678B0E00E461C2</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>66491C0B1A678B0E00E461C2</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>LMGeocoder_Tests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>66491C0C1A678B0E00E461C2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>66491C0B1A678B0E00E461C2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>66491C0D1A678B0E00E461C2</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>62C9434E193AEC5300A929FD</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>62C94355193AEC5300A929FD</string>
+			<key>remoteInfo</key>
+			<string>LMGeocoder</string>
+		</dict>
+		<key>66491C0E1A678B0E00E461C2</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>62C94355193AEC5300A929FD</string>
+			<key>targetProxy</key>
+			<string>66491C0D1A678B0E00E461C2</string>
+		</dict>
+		<key>66491C0F1A678B0E00E461C2</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>LMGeocoder Tests/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.1</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/LMGeocoder.app/LMGeocoder</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>66491C101A678B0E00E461C2</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>LMGeocoder Tests/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.1</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/LMGeocoder.app/LMGeocoder</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>66491C111A678B0E00E461C2</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>66491C0F1A678B0E00E461C2</string>
+				<string>66491C101A678B0E00E461C2</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E1865CDD10A6A3AE45C82CF0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Find unused imports</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>/bin/sh "/Users/adam/Library/Application Support/Developer/Shared/Xcode/Plug-ins/xcfui.xcplugin/Contents/Resources/fui_script.sh" "/Users/adam/Projects/Forks/LMGeocoder/LMGeocoderDemo"</string>
+			<key>showEnvVarsInLog</key>
+			<string>1</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>62C9434E193AEC5300A929FD</string>
+</dict>
+</plist>
