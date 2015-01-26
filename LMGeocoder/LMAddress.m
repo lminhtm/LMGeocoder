@@ -24,12 +24,9 @@
 
 #pragma mark - CONSTANTS
 
-// @Double
 static NSString *const LMLatitudeKey            = @"latitude";
 static NSString *const LMLongitudeKey           = @"longitude";
-// @BOOL
 static NSString *const LMIsValidKey             = @"isValid";
-// NSString
 static NSString *const LMStreetNumberKey        = @"streetNumber";
 static NSString *const LMRouteKey               = @"route";
 static NSString *const LMLocalityKey            = @"locality";
@@ -46,7 +43,7 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
 
 #pragma mark - INIT
 
-- (instancetype)init
+- (id)init
 {
     self = [super init];
     if (self) {
@@ -62,90 +59,13 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
         if (serviceType == 1) {
             [self setGoogleLocationData:locationData];
         }
-        else{
+        else {
             [self setAppleLocationData:locationData];
         }
     }
     return self;
 }
 
-#pragma mark - EQUALITY
-
-- (BOOL)isEqual:(id)object
-{
-    BOOL equal = [super isEqual:object];
-    if (equal)
-    {
-        return YES;
-    }
-    if ([object isKindOfClass:[self class]] == NO)
-    {
-        return NO;
-    }
-    LMAddress *other = object;
-    // Lat/Long
-    equal = (self.coordinate.latitude  == other.coordinate.latitude);
-    equal &= (self.coordinate.longitude == other.coordinate.longitude);
-    // IsValid
-    equal &= (self.isValid == other.isValid);
-    // The rest
-    for (NSString *key in allStringKeys)
-    {
-        equal &= [[self valueForKey:key] isEqual:[other valueForKey:key]];
-    }
-    return equal;
-}
-
-- (NSUInteger)hash
-{
-    // Should be enough to hash-table well
-    NSUInteger hashValue = (self.isValid ? 1 : 0);
-    hashValue += floor(self.coordinate.latitude) + floor(self.coordinate.longitude);
-    hashValue += self.formattedAddress.hash;
-    return hashValue;
-}
-
-#pragma mark - NSCODING
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [self init];
-    if (self)
-    {
-        // Load doubles into coordinate
-        self.coordinate = CLLocationCoordinate2DMake([aDecoder decodeDoubleForKey:LMLatitudeKey],
-                                                     [aDecoder decodeDoubleForKey:LMLongitudeKey]);
-        // Load bool
-        self.isValid    = [aDecoder decodeBoolForKey:LMIsValidKey];
-        // Load the strings into properties by name
-        for (NSString *key in allStringKeys)
-        {
-            [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
-        }
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    // Double
-    [aCoder encodeDouble:self.coordinate.latitude forKey:LMLatitudeKey];
-    [aCoder encodeDouble:self.coordinate.longitude forKey:LMLongitudeKey];
-    // Bool
-    [aCoder encodeBool:self.isValid forKey:LMIsValidKey];
-    // String
-    for (NSString *key in allStringKeys)
-    {
-        [aCoder encodeObject:[self valueForKey:key] forKey:key];
-    }
-}
-
-#pragma mark - NSCOPYING
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]];
-}
 
 #pragma mark - PARSING
 
@@ -222,6 +142,87 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
     }
     
 	return [[array objectAtIndex:index] valueForKey:type];
+}
+
+
+#pragma mark - EQUALITY
+
+- (BOOL)isEqual:(id)object
+{
+    BOOL equal = [super isEqual:object];
+    if (equal) {
+        return YES;
+    }
+    if ([object isKindOfClass:[self class]] == NO) {
+        return NO;
+    }
+    
+    LMAddress *other = object;
+    // Lat/Long
+    equal = (self.coordinate.latitude  == other.coordinate.latitude);
+    equal &= (self.coordinate.longitude == other.coordinate.longitude);
+    // IsValid
+    equal &= (self.isValid == other.isValid);
+    // The rest
+    for (NSString *key in allStringKeys) {
+        equal &= [[self valueForKey:key] isEqual:[other valueForKey:key]];
+    }
+    
+    return equal;
+}
+
+- (NSUInteger)hash
+{
+    // Should be enough to hash-table well
+    NSUInteger hashValue = (self.isValid ? 1 : 0);
+    hashValue += floor(self.coordinate.latitude) + floor(self.coordinate.longitude);
+    hashValue += self.formattedAddress.hash;
+    return hashValue;
+}
+
+
+#pragma mark - NSCODING
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [self init];
+    if (self) {
+        // Load doubles into coordinate
+        self.coordinate = CLLocationCoordinate2DMake([aDecoder decodeDoubleForKey:LMLatitudeKey],
+                                                     [aDecoder decodeDoubleForKey:LMLongitudeKey]);
+        
+        // Load bool
+        self.isValid = [aDecoder decodeBoolForKey:LMIsValidKey];
+        
+        // Load the strings into properties by name
+        for (NSString *key in allStringKeys) {
+            [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
+        }
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    // Double
+    [aCoder encodeDouble:self.coordinate.latitude forKey:LMLatitudeKey];
+    [aCoder encodeDouble:self.coordinate.longitude forKey:LMLongitudeKey];
+    
+    // Bool
+    [aCoder encodeBool:self.isValid forKey:LMIsValidKey];
+    
+    // String
+    for (NSString *key in allStringKeys) {
+        [aCoder encodeObject:[self valueForKey:key] forKey:key];
+    }
+}
+
+
+#pragma mark - NSCOPYING
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]];
 }
 
 @end
