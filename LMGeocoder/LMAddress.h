@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LMAddress : NSObject
+@interface LMAddress : NSObject <NSCopying, NSCoding>
 
 /*!
 *  The location coordinate
@@ -50,6 +50,11 @@
  *  The country name
  */
 @property (nonatomic, copy) NSString *country;
+
+/*!
+ *  The ISO country code (e.g. AU)
+ */
+@property (nonatomic, copy) NSString *countryCode;
 
 /*!
  *  The formatted address
