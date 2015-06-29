@@ -20,7 +20,7 @@ pod 'LMGeocoder'
 #### Manually
 * Drag the `LMGeocoder` folder into your project.
 * Add the `CoreLocation.framework` to your project.
-* Add `#include "LMGaugeView.h"` to the top of classes that will use it.
+* Add `#import "LMReverseGeocoder.h"` to the top of classes that will use it.
 
 ## Usage
 #### Geocoding
