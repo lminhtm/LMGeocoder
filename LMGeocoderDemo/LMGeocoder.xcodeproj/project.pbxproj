@@ -119,10 +119,10 @@
 		62C9438E193AEDFC00A929FD /* LMGeocoder */ = {
 			isa = PBXGroup;
 			children = (
-				62C9438F193AF00100A929FD /* LMAddress.h */,
-				62C94390193AF00100A929FD /* LMAddress.m */,
 				62C94391193AF00100A929FD /* LMGeocoder.h */,
 				62C94392193AF00100A929FD /* LMGeocoder.m */,
+				62C9438F193AF00100A929FD /* LMAddress.h */,
+				62C94390193AF00100A929FD /* LMAddress.m */,
 			);
 			name = LMGeocoder;
 			path = ../../LMGeocoder;

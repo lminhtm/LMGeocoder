@@ -1,66 +1,60 @@
 //
 //  LMAddress.m
-//  LMLibrary
+//  LMGeocoder
 //
 //  Created by LMinh on 31/05/2014.
-//  Copyright (c) Năm 2014 LMinh. All rights reserved.
+//  Copyright (c) 2014 LMinh. All rights reserved.
 //
 
 #import "LMAddress.h"
+#import "LMGeocoder.h"
+
+static NSString * const LMLatitudeKey            = @"latitude";
+static NSString * const LMLongitudeKey           = @"longitude";
+static NSString * const LMThoroughfareKey        = @"thoroughfare";
+static NSString * const LMLocalityKey            = @"locality";
+static NSString * const LMSubLocalityKey         = @"subLocality";
+static NSString * const LMAdministrativeAreaKey  = @"administrativeArea";
+static NSString * const LMPostalCodeKey          = @"postalCode";
+static NSString * const LMCountryKey             = @"country";
+static NSString * const LMISOCountryCodeKey      = @"ISOcountryCode";
+static NSString * const LMFormattedAddressKey    = @"formattedAddress";
+static NSString * const LMLinesKey               = @"lines";
+
+#define allStringKeys @[LMThoroughfareKey, LMLocalityKey, LMSubLocalityKey, \
+                        LMAdministrativeAreaKey, LMPostalCodeKey, LMCountryKey, \
+                        LMISOCountryCodeKey, LMFormattedAddressKey]
 
 @implementation LMAddress
 
-@synthesize coordinate;
-@synthesize streetNumber;
-@synthesize route;
-@synthesize locality;
-@synthesize subLocality;
-@synthesize administrativeArea;
-@synthesize postalCode;
-@synthesize country;
-@synthesize formattedAddress;
-@synthesize isValid;
-@synthesize countryCode;
-
-#pragma mark - CONSTANTS
-
-static NSString *const LMLatitudeKey            = @"latitude";
-static NSString *const LMLongitudeKey           = @"longitude";
-static NSString *const LMIsValidKey             = @"isValid";
-static NSString *const LMStreetNumberKey        = @"streetNumber";
-static NSString *const LMRouteKey               = @"route";
-static NSString *const LMLocalityKey            = @"locality";
-static NSString *const LMSubLocalityKey         = @"subLocality";
-static NSString *const LMAdministrativeAreaKey  = @"administrativeArea";
-static NSString *const LMPostalCodeKey          = @"postalCode";
-static NSString *const LMCountryKey             = @"country";
-static NSString *const LMFormattedAddressKey    = @"formattedAddress";
-static NSString *const LMCountryCodeKey         = @"countryCode";
-
-#define allStringKeys @[LMStreetNumberKey, LMRouteKey, LMLocalityKey, LMSubLocalityKey, \
-                        LMAdministrativeAreaKey, LMPostalCodeKey, LMCountryKey, \
-                        LMFormattedAddressKey, LMCountryCodeKey]
+@synthesize coordinate = _coordinate;
+@synthesize thoroughfare = _thoroughfare;
+@synthesize locality = _locality;
+@synthesize subLocality = _subLocality;
+@synthesize administrativeArea = _administrativeArea;
+@synthesize postalCode = _postalCode;
+@synthesize country = _country;
+@synthesize ISOcountryCode = _ISOcountryCode;
+@synthesize formattedAddress = _formattedAddress;
+@synthesize lines = _lines;
 
 #pragma mark - INIT
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.isValid = YES;
-    }
-    return self;
-}
 
 - (id)initWithLocationData:(id)locationData forServiceType:(int)serviceType
 {
     self = [self init];
-    if (self) {
-        if (serviceType == 1) {
-            [self setGoogleLocationData:locationData];
-        }
-        else {
-            [self setAppleLocationData:locationData];
+    if (self)
+    {
+        switch (serviceType)
+        {
+            case kLMGeocoderAppleService:
+                [self setAppleLocationData:locationData];
+                break;
+            case kLMGeocoderGoogleService:
+                [self setGoogleLocationData:locationData];
+                break;
+            default:
+                break;
         }
     }
     return self;
@@ -71,77 +65,65 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
 
 - (void)setAppleLocationData:(id)locationData
 {
-    NSArray *placemarks = (NSArray *)locationData;
-    CLPlacemark *placemark = [placemarks objectAtIndex:0];
-    NSArray *lines = placemark.addressDictionary[@"FormattedAddressLines"];
-    
-    if (lines && [lines count])
+    if (locationData && [locationData isKindOfClass:[CLPlacemark class]])
     {
-        self.isValid = YES;
+        CLPlacemark *placemark = (CLPlacemark *)locationData;
         
-        self.coordinate = placemark.location.coordinate;
-        self.streetNumber = placemark.thoroughfare;
-        self.locality = placemark.locality;
-        self.subLocality = placemark.subLocality;
-        self.administrativeArea = placemark.administrativeArea;
-        self.postalCode = placemark.postalCode;
-        self.country = placemark.country;
-        self.countryCode = placemark.ISOcountryCode;
-        self.formattedAddress = [lines componentsJoinedByString:@", "];
-    }
-    else
-    {
-        self.isValid = NO;
+        NSArray *lines = placemark.addressDictionary[@"FormattedAddressLines"];
+        NSString *formattedAddress = [lines componentsJoinedByString:@", "];
+        
+        _coordinate = placemark.location.coordinate;
+        _thoroughfare = placemark.thoroughfare;
+        _locality = placemark.locality;
+        _subLocality = placemark.subLocality;
+        _administrativeArea = placemark.administrativeArea;
+        _postalCode = placemark.postalCode;
+        _country = placemark.country;
+        _ISOcountryCode = placemark.ISOcountryCode;
+        _formattedAddress = formattedAddress;
+        _lines = lines;
     }
 }
 
 - (void)setGoogleLocationData:(id)locationData
 {
-    NSDictionary *resultDict = (NSDictionary *)locationData;
-    NSString *status = [resultDict valueForKey:@"status"];
-    
-    if ([status isEqualToString:@"OK"])
+    if (locationData && [locationData isKindOfClass:[NSDictionary class]])
     {
-        self.isValid = YES;
+        NSDictionary *locationDict = (NSDictionary *)locationData;
         
-        NSDictionary *locationDict = [[resultDict objectForKey:@"results"] objectAtIndex:0];
-        NSArray *addressComponents = [locationDict objectForKey:@"address_components"];
-        NSString *formattedAddrs = [locationDict objectForKey:@"formatted_address"];
-        double lat = [[[[locationDict objectForKey:@"geometry"] objectForKey:@"location"] valueForKey:@"lat"] doubleValue];
-        double lng = [[[[locationDict objectForKey:@"geometry"] objectForKey:@"location"] valueForKey:@"lng"] doubleValue];
+        NSArray *lines = locationDict[@"address_components"];
+        NSString *formattedAddress = locationDict[@"formatted_address"];
+        double lat = [locationDict[@"geometry"][@"location"][@"lat"] doubleValue];
+        double lng = [locationDict[@"geometry"][@"location"][@"lng"] doubleValue];
         
-        self.coordinate = CLLocationCoordinate2DMake(lat, lng);
-        self.streetNumber = [self component:@"street_number" inArray:addressComponents ofType:@"long_name"];
-        self.route = [self component:@"route" inArray:addressComponents ofType:@"long_name"];
-        self.locality = [self component:@"locality" inArray:addressComponents ofType:@"long_name"];
-        self.subLocality = [self component:@"subLocality" inArray:addressComponents ofType:@"long_name"];
-        self.administrativeArea = [self component:@"administrative_area_level_1" inArray:addressComponents ofType:@"long_name"];
-        self.postalCode = [self component:@"postal_code" inArray:addressComponents ofType:@"short_name"];
-        self.country = [self component:@"country" inArray:addressComponents ofType:@"long_name"];
-        self.countryCode = [self component:@"country" inArray:addressComponents ofType:@"short_name"];
-        self.formattedAddress = formattedAddrs;
-    }
-    else
-    {
-        self.isValid = NO;
+        _coordinate = CLLocationCoordinate2DMake(lat, lng);
+        _thoroughfare = [self component:@"street_number" inArray:lines ofType:@"long_name"];
+        _locality = [self component:@"locality" inArray:lines ofType:@"long_name"];
+        _subLocality = [self component:@"subLocality" inArray:lines ofType:@"long_name"];
+        _administrativeArea = [self component:@"administrative_area_level_1" inArray:lines ofType:@"long_name"];
+        _postalCode = [self component:@"postal_code" inArray:lines ofType:@"short_name"];
+        _country = [self component:@"country" inArray:lines ofType:@"long_name"];
+        _ISOcountryCode = [self component:@"country" inArray:lines ofType:@"short_name"];
+        _formattedAddress = formattedAddress;
+        _lines = lines;
     }
 }
 
 - (NSString *)component:(NSString *)component inArray:(NSArray *)array ofType:(NSString *)type
 {
-	NSInteger index = [array indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop){
+    NSInteger index = [array indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
         return [(NSString *)([[obj objectForKey:@"types"] objectAtIndex:0]) isEqualToString:component];
-	}];
-	
-	if (index == NSNotFound) {
+    }];
+    
+    if (index == NSNotFound) {
         return nil;
     }
-	
+    
     if (index >= array.count) {
         return nil;
     }
     
-	return [[array objectAtIndex:index] valueForKey:type];
+    return [[array objectAtIndex:index] valueForKey:type];
 }
 
 
@@ -153,20 +135,23 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
     if (equal) {
         return YES;
     }
-    if ([object isKindOfClass:[self class]] == NO) {
+    if (![object isKindOfClass:[self class]]) {
         return NO;
     }
     
     LMAddress *other = object;
+    
     // Lat/Long
-    equal = (self.coordinate.latitude  == other.coordinate.latitude);
+    equal = (self.coordinate.latitude == other.coordinate.latitude);
     equal &= (self.coordinate.longitude == other.coordinate.longitude);
-    // IsValid
-    equal &= (self.isValid == other.isValid);
-    // The rest
+    
+    // String values
     for (NSString *key in allStringKeys) {
         equal &= [[self valueForKey:key] isEqual:[other valueForKey:key]];
     }
+    
+    // Lines
+    equal &= [self.lines isEqualToArray:other.lines];
     
     return equal;
 }
@@ -174,7 +159,7 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
 - (NSUInteger)hash
 {
     // Should be enough to hash-table well
-    NSUInteger hashValue = (self.isValid ? 1 : 0);
+    NSUInteger hashValue = 1;
     hashValue += floor(self.coordinate.latitude) + floor(self.coordinate.longitude);
     hashValue += self.formattedAddress.hash;
     return hashValue;
@@ -188,16 +173,16 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
     self = [self init];
     if (self) {
         // Load doubles into coordinate
-        self.coordinate = CLLocationCoordinate2DMake([aDecoder decodeDoubleForKey:LMLatitudeKey],
-                                                     [aDecoder decodeDoubleForKey:LMLongitudeKey]);
-        
-        // Load bool
-        self.isValid = [aDecoder decodeBoolForKey:LMIsValidKey];
+        _coordinate = CLLocationCoordinate2DMake([aDecoder decodeDoubleForKey:LMLatitudeKey],
+                                                 [aDecoder decodeDoubleForKey:LMLongitudeKey]);
         
         // Load the strings into properties by name
         for (NSString *key in allStringKeys) {
             [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
         }
+        
+        // Load lines array
+        _lines = [aDecoder decodeObjectForKey:LMLinesKey];
     }
     return self;
 }
@@ -208,13 +193,13 @@ static NSString *const LMCountryCodeKey         = @"countryCode";
     [aCoder encodeDouble:self.coordinate.latitude forKey:LMLatitudeKey];
     [aCoder encodeDouble:self.coordinate.longitude forKey:LMLongitudeKey];
     
-    // Bool
-    [aCoder encodeBool:self.isValid forKey:LMIsValidKey];
-    
     // String
     for (NSString *key in allStringKeys) {
         [aCoder encodeObject:[self valueForKey:key] forKey:key];
     }
+    
+    // Array
+    [aCoder encodeObject:self.lines forKey:LMLinesKey];
 }
 
 

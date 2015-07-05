@@ -1,70 +1,69 @@
 //
 //  LMAddress.h
-//  LMLibrary
+//  LMGeocoder
 //
 //  Created by LMinh on 31/05/2014.
-//  Copyright (c) Năm 2014 LMinh. All rights reserved.
+//  Copyright (c) 2014 LMinh. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+/*!
+ *  A result from a reverse geocode request, containing a human-readable address.
+ *  Some of the fields may be nil, indicating they are not present.
+ */
 @interface LMAddress : NSObject <NSCopying, NSCoding>
 
 /*!
-*  The location coordinate
-*/
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+ *  The location coordinate
+ */
+@property (nonatomic, readonly, assign) CLLocationCoordinate2D coordinate;
 
 /*!
- *  The precise street address
+ *  The precise street address.
  */
-@property (nonatomic, copy) NSString *streetNumber;
+@property (nonatomic, readonly, copy) NSString *thoroughfare;
 
 /*!
- *  The named route
+ *  The incorporated city or town political entity.
  */
-@property (nonatomic, copy) NSString *route;
+@property (nonatomic, readonly, copy) NSString *locality;
 
 /*!
- *  The incorporated city or town political entity
+ *  The first-order civil entity below a localit.
  */
-@property (nonatomic, copy) NSString *locality;
+@property (nonatomic, readonly, copy) NSString *subLocality;
 
 /*!
- *  The first-order civil entity below a localit
+ *  The civil entity below the country level.
  */
-@property (nonatomic, copy) NSString *subLocality;
+@property (nonatomic, readonly, copy) NSString *administrativeArea;
 
 /*!
- *  The civil entity below the country level
+ *  The Postal/Zip code.
  */
-@property (nonatomic, copy) NSString *administrativeArea;
+@property (nonatomic, readonly, copy) NSString *postalCode;
 
 /*!
- *  The Postal/Zip code
+ *  The country name.
  */
-@property (nonatomic, copy) NSString *postalCode;
+@property (nonatomic, readonly, copy) NSString *country;
 
 /*!
- *  The country name
+ *  The ISO country code.
  */
-@property (nonatomic, copy) NSString *country;
+@property (nonatomic, readonly, copy) NSString *ISOcountryCode;
 
 /*!
- *  The ISO country code (e.g. AU)
+ *  The formatted address.
  */
-@property (nonatomic, copy) NSString *countryCode;
+@property (nonatomic, readonly, copy) NSString *formattedAddress;
 
 /*!
- *  The formatted address
+ *  An array of NSString containing formatted lines of the address.
  */
-@property (nonatomic, copy) NSString *formattedAddress;
-
-/*!
- *  Response from server is usable
- */
-@property (nonatomic, assign) BOOL isValid;
+@property(nonatomic, readonly, copy) NSArray *lines;
 
 /*!
  *  Initialize with response from server

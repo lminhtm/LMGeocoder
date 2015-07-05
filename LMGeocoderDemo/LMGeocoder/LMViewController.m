@@ -3,13 +3,12 @@
 //  LMGeocoder
 //
 //  Created by LMinh on 01/06/2014.
-//  Copyright (c) Năm 2014 LMinh. All rights reserved.
+//  Copyright (c) 2014 LMinh. All rights reserved.
 //
 
 #import "LMViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "LMAddress.h"
 #import "LMGeocoder.h"
 
 @interface LMViewController () <CLLocationManagerDelegate>
@@ -35,6 +34,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    self.locationManager.distanceFilter = 100;
     if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [self.locationManager requestAlwaysAuthorization];
     }
@@ -77,13 +77,14 @@
     
     [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
                                                   service:kLMGeocoderGoogleService
-                                        completionHandler:^(LMAddress *address, NSError *error) {
+                                        completionHandler:^(NSArray *results, NSError *error) {
                                             
-                                            if (address && !error) {
+                                            if (results.count && !error) {
+                                                LMAddress *address = [results firstObject];
                                                 self.addressLabel.text = address.formattedAddress;
                                             }
                                             else {
-                                                self.addressLabel.text = [error localizedDescription];
+                                                self.addressLabel.text = @"-";
                                             }
                                             
                                             [self.addressLabel sizeToFit];
