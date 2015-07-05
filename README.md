@@ -53,8 +53,6 @@ See sample Xcode project in `/LMGeocoderDemo`
 LMGeocoder is licensed under the terms of the MIT License.
 
 ## Contact
-
 Minh Luong Nguyen
-
 * https://github.com/lminhtm
 * lminhtm@gmail.com
