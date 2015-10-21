@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		402393B91BC5FDCA00FD5347 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402393B81BC5FDCA00FD5347 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		402393BB1BC6018500FD5347 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402393BA1BC6018500FD5347 /* Launch.storyboard */; settings = {ASSET_TAGS = (); }; };
 		62C9435A193AEC5300A929FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C94359193AEC5300A929FD /* Foundation.framework */; };
 		62C9435C193AEC5300A929FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C9435B193AEC5300A929FD /* CoreGraphics.framework */; };
 		62C9435E193AEC5300A929FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C9435D193AEC5300A929FD /* UIKit.framework */; };
@@ -19,10 +21,11 @@
 		62C94394193AF00100A929FD /* LMGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C94392193AF00100A929FD /* LMGeocoder.m */; };
 		62C943A7193B25CF00A929FD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C943A6193B25CF00A929FD /* CoreLocation.framework */; };
 		62C943A9193B316200A929FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C943A8193B316200A929FD /* AVFoundation.framework */; };
-		62C943AB193B338100A929FD /* LMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C943AA193B338100A929FD /* LMViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		402393B81BC5FDCA00FD5347 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		402393BA1BC6018500FD5347 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		62C94356193AEC5300A929FD /* LMGeocoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMGeocoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C94359193AEC5300A929FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		62C9435B193AEC5300A929FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -42,7 +45,6 @@
 		62C94392193AF00100A929FD /* LMGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMGeocoder.m; sourceTree = "<group>"; };
 		62C943A6193B25CF00A929FD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		62C943A8193B316200A929FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		62C943AA193B338100A929FD /* LMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,7 @@
 				62C94369193AEC5300A929FD /* LMAppDelegate.m */,
 				62C9436E193AEC5300A929FD /* LMViewController.h */,
 				62C9436F193AEC5300A929FD /* LMViewController.m */,
-				62C943AA193B338100A929FD /* LMViewController.xib */,
+				402393B81BC5FDCA00FD5347 /* Main.storyboard */,
 				62C9438E193AEDFC00A929FD /* LMGeocoder */,
 				62C94360193AEC5300A929FD /* Supporting Files */,
 			);
@@ -107,6 +109,7 @@
 		62C94360193AEC5300A929FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				402393BA1BC6018500FD5347 /* Launch.storyboard */,
 				62C94371193AEC5300A929FD /* Images.xcassets */,
 				62C94361193AEC5300A929FD /* LMGeocoder-Info.plist */,
 				62C94362193AEC5300A929FD /* InfoPlist.strings */,
@@ -155,8 +158,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = LM;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = LMinh;
+				TargetAttributes = {
+					62C94355193AEC5300A929FD = {
+						DevelopmentTeam = 23ZR6AWKT8;
+					};
+				};
 			};
 			buildConfigurationList = 62C94351193AEC5300A929FD /* Build configuration list for PBXProject "LMGeocoder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -182,8 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C94372193AEC5300A929FD /* Images.xcassets in Resources */,
-				62C943AB193B338100A929FD /* LMViewController.xib in Resources */,
+				402393BB1BC6018500FD5347 /* Launch.storyboard in Resources */,
 				62C94364193AEC5300A929FD /* InfoPlist.strings in Resources */,
+				402393B91BC5FDCA00FD5347 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +243,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -291,10 +301,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMGeocoder/LMGeocoder-Prefix.pch";
 				INFOPLIST_FILE = "LMGeocoder/LMGeocoder-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoder2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -304,10 +319,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMGeocoder/LMGeocoder-Prefix.pch";
 				INFOPLIST_FILE = "LMGeocoder/LMGeocoder-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoder2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

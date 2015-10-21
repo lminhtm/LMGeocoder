@@ -15,14 +15,14 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
-@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (strong, nonatomic) IBOutlet UILabel *latitudeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *longitudeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
-
 @end
 
 @implementation LMViewController
+
+@synthesize backgroundImageView;
+@synthesize latitudeLabel;
+@synthesize longitudeLabel;
+@synthesize addressLabel;
 
 #pragma mark - VIEW LIFECYCLE
 
