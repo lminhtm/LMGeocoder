@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		402393B91BC5FDCA00FD5347 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402393B81BC5FDCA00FD5347 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		402393BB1BC6018500FD5347 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402393BA1BC6018500FD5347 /* Launch.storyboard */; settings = {ASSET_TAGS = (); }; };
+		402393B91BC5FDCA00FD5347 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402393B81BC5FDCA00FD5347 /* Main.storyboard */; };
+		402393BB1BC6018500FD5347 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402393BA1BC6018500FD5347 /* Launch.storyboard */; };
+		5CA6F41B1BFECF8300BF7C86 /* LMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6F41A1BFECF8300BF7C86 /* LMLabel.m */; };
 		62C9435A193AEC5300A929FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C94359193AEC5300A929FD /* Foundation.framework */; };
 		62C9435C193AEC5300A929FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C9435B193AEC5300A929FD /* CoreGraphics.framework */; };
 		62C9435E193AEC5300A929FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C9435D193AEC5300A929FD /* UIKit.framework */; };
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		402393B81BC5FDCA00FD5347 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		402393BA1BC6018500FD5347 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		5CA6F4191BFECF8300BF7C86 /* LMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMLabel.h; sourceTree = "<group>"; };
+		5CA6F41A1BFECF8300BF7C86 /* LMLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMLabel.m; sourceTree = "<group>"; };
 		62C94356193AEC5300A929FD /* LMGeocoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMGeocoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C94359193AEC5300A929FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		62C9435B193AEC5300A929FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CA6F41C1BFED00000BF7C86 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				5CA6F4191BFECF8300BF7C86 /* LMLabel.h */,
+				5CA6F41A1BFECF8300BF7C86 /* LMLabel.m */,
+			);
+			name = Vender;
+			sourceTree = "<group>";
+		};
 		62C9434D193AEC5300A929FD = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +113,7 @@
 				62C9436F193AEC5300A929FD /* LMViewController.m */,
 				402393B81BC5FDCA00FD5347 /* Main.storyboard */,
 				62C9438E193AEDFC00A929FD /* LMGeocoder */,
+				5CA6F41C1BFED00000BF7C86 /* Vender */,
 				62C94360193AEC5300A929FD /* Supporting Files */,
 			);
 			path = LMGeocoder;
@@ -160,11 +173,6 @@
 				CLASSPREFIX = LM;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = LMinh;
-				TargetAttributes = {
-					62C94355193AEC5300A929FD = {
-						DevelopmentTeam = 23ZR6AWKT8;
-					};
-				};
 			};
 			buildConfigurationList = 62C94351193AEC5300A929FD /* Build configuration list for PBXProject "LMGeocoder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -206,6 +214,7 @@
 				62C94366193AEC5300A929FD /* main.m in Sources */,
 				62C94393193AF00100A929FD /* LMAddress.m in Sources */,
 				62C94394193AF00100A929FD /* LMGeocoder.m in Sources */,
+				5CA6F41B1BFECF8300BF7C86 /* LMLabel.m in Sources */,
 				62C9436A193AEC5300A929FD /* LMAppDelegate.m in Sources */,
 				62C94370193AEC5300A929FD /* LMViewController.m in Sources */,
 			);
@@ -258,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -290,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -306,7 +315,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMGeocoder/LMGeocoder-Prefix.pch";
 				INFOPLIST_FILE = "LMGeocoder/LMGeocoder-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoder2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -324,7 +333,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMGeocoder/LMGeocoder-Prefix.pch";
 				INFOPLIST_FILE = "LMGeocoder/LMGeocoder-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoder2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

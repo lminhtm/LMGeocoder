@@ -10,10 +10,19 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "LMGeocoder.h"
+#import "LMLabel.h"
 
 @interface LMViewController () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
+
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIView *latitudeView;
+@property (weak, nonatomic) IBOutlet UIView *longitudeView;
+@property (weak, nonatomic) IBOutlet UIView *addressView;
+@property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
+@property (weak, nonatomic) IBOutlet LMLabel *addressLabel;
 
 @end
 
@@ -39,6 +48,17 @@
         [self.locationManager requestAlwaysAuthorization];
     }
     [self.locationManager startUpdatingLocation];
+    
+    // Customize UI
+    [self customizeUI];
+}
+
+- (void)customizeUI
+{
+    // Black background
+    self.latitudeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+    self.longitudeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+    self.addressView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
     
     // Show camera on real device for nice effect
     BOOL hasCamera = ([[AVCaptureDevice devices] count] > 0);
@@ -72,9 +92,11 @@
     CLLocation *location = [locations lastObject];
     CLLocationCoordinate2D coordinate = location.coordinate;
     
+    // Update UI
     self.latitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.latitude];
     self.longitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.longitude];
     
+    // Start to reverse
     [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
                                                   service:kLMGeocoderGoogleService
                                         completionHandler:^(NSArray *results, NSError *error) {
@@ -86,8 +108,6 @@
                                             else {
                                                 self.addressLabel.text = @"-";
                                             }
-                                            
-                                            [self.addressLabel sizeToFit];
                                         }];
 }
 
