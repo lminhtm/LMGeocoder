@@ -95,6 +95,9 @@
     // Update UI
     self.latitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.latitude];
     self.longitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.longitude];
+
+    //You can set your google API key here
+    [LMGeocoder sharedInstance].googleAPIKey = @"API_KEY";
     
     // Start to reverse
     [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate

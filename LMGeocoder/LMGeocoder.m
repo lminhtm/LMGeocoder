@@ -11,9 +11,9 @@
 
 #define kTimeoutInterval                        60
 #define kLMGeocoderErrorDomain                  @"LMGeocoderError"
-#define kGoogleAPIReverseGeocodingURL(lat, lng) [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&sensor=true", lat, lng];
-#define kGoogleAPIGeocodingURL(address)         [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", address];
-
+#define kGoogleAPIReverseGeocodingURL(lat, lng) [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&sensor=true", lat, lng];
+#define kGoogleAPIGeocodingURL(address)         [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", address];
+#define kGoogleAPIWithKey(api, key)             [NSString stringWithFormat:@"%@&key=%@", api, key];
 @interface LMGeocoder ()
 
 @property (nonatomic, assign) LMGeocoderService currentService;
@@ -93,6 +93,9 @@
             {
                 // Geocode using Google service
                 NSString *urlString = kGoogleAPIGeocodingURL(self.requestedAddress);
+                if (self.googleAPIKey != nil) {
+                    urlString = kGoogleAPIWithKey(urlString, self.googleAPIKey)
+                }
                 [self buildConnectionFromURLString:urlString];
                 break;
             }
@@ -156,6 +159,10 @@
             {
                 // Reverse geocode using Google service
                 NSString *urlString = kGoogleAPIReverseGeocodingURL(self.requestedCoordinate.latitude, self.requestedCoordinate.longitude);
+                if (self.googleAPIKey != nil) {
+                    urlString = kGoogleAPIWithKey(urlString, self.googleAPIKey)
+                }
+
                 [self buildConnectionFromURLString:urlString];
                 break;
             }
