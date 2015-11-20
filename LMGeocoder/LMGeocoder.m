@@ -211,7 +211,7 @@
 
 - (void)buildConnectionFromURLString:(NSString *)urlString
 {
-    NSURL *requestURL = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *requestURL = [NSURL URLWithString:[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
     [request setTimeoutInterval:kTimeoutInterval];
