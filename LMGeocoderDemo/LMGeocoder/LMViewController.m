@@ -58,6 +58,8 @@
 
 - (void)customizeUI
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     // Black background
     self.latitudeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
     self.longitudeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
