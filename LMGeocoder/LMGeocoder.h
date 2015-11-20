@@ -42,11 +42,10 @@ typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
  */
 @property (nonatomic, readonly, assign) BOOL isGeocoding;
 
-/*
-* To set google API key
-*/
- 
-@property (nonatomic, strong) NSString* googleAPIKey;
+/*!
+ *  To set google API key
+ */
+@property (nonatomic, strong) NSString *googleAPIKey;
 
 /*!
  *  Get shared instance.

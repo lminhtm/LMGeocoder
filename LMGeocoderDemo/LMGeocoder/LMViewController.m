@@ -39,6 +39,9 @@
 {
     [super viewDidLoad];
     
+    // You can set your google API key here
+    [LMGeocoder sharedInstance].googleAPIKey = nil;
+    
     // Start getting current location
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -95,9 +98,6 @@
     // Update UI
     self.latitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.latitude];
     self.longitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.longitude];
-
-    //You can set your google API key here
-    [LMGeocoder sharedInstance].googleAPIKey = @"API_KEY";
     
     // Start to reverse
     [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
