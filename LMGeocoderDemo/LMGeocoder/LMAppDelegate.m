@@ -11,15 +11,8 @@
 @implementation LMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.rootViewController = [[LMViewController alloc] init];
-    self.window.rootViewController = self.rootViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
-    self.window.tintColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+{    
+//    [self.window makeKeyAndVisible];
     
     return YES;
 }
