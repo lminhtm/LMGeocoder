@@ -21,9 +21,14 @@
 @property (nonatomic, readonly, assign) CLLocationCoordinate2D coordinate;
 
 /*!
- *  The precise street address.
+ *  The street number.
  */
-@property (nonatomic, readonly, copy) NSString *thoroughfare;
+@property (nonatomic, readonly, copy) NSString *number;
+
+/*!
+ *  The street name.
+ */
+@property (nonatomic, readonly, copy) NSString *street;
 
 /*!
  *  The incorporated city or town political entity.

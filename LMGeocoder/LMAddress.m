@@ -11,7 +11,8 @@
 
 static NSString * const LMLatitudeKey            = @"latitude";
 static NSString * const LMLongitudeKey           = @"longitude";
-static NSString * const LMThoroughfareKey        = @"thoroughfare";
+static NSString * const LMStreetKey              = @"street";
+static NSString * const LMNumberKey              = @"number";
 static NSString * const LMLocalityKey            = @"locality";
 static NSString * const LMSubLocalityKey         = @"subLocality";
 static NSString * const LMAdministrativeAreaKey  = @"administrativeArea";
@@ -21,14 +22,15 @@ static NSString * const LMISOCountryCodeKey      = @"ISOcountryCode";
 static NSString * const LMFormattedAddressKey    = @"formattedAddress";
 static NSString * const LMLinesKey               = @"lines";
 
-#define allStringKeys @[LMThoroughfareKey, LMLocalityKey, LMSubLocalityKey, \
+#define allStringKeys @[LMStreetKey, LMNumberKey, LMLocalityKey, LMSubLocalityKey, \
                         LMAdministrativeAreaKey, LMPostalCodeKey, LMCountryKey, \
                         LMISOCountryCodeKey, LMFormattedAddressKey]
 
 @implementation LMAddress
 
 @synthesize coordinate = _coordinate;
-@synthesize thoroughfare = _thoroughfare;
+@synthesize street = _street;
+@synthesize number = _number;
 @synthesize locality = _locality;
 @synthesize subLocality = _subLocality;
 @synthesize administrativeArea = _administrativeArea;
@@ -73,7 +75,8 @@ static NSString * const LMLinesKey               = @"lines";
         NSString *formattedAddress = [lines componentsJoinedByString:@", "];
         
         _coordinate = placemark.location.coordinate;
-        _thoroughfare = placemark.thoroughfare;
+        _street = placemark.thoroughfare;
+        _number = placemark.subThoroughfare;
         _locality = placemark.locality;
         _subLocality = placemark.subLocality;
         _administrativeArea = placemark.administrativeArea;
@@ -97,7 +100,8 @@ static NSString * const LMLinesKey               = @"lines";
         double lng = [locationDict[@"geometry"][@"location"][@"lng"] doubleValue];
         
         _coordinate = CLLocationCoordinate2DMake(lat, lng);
-        _thoroughfare = [self component:@"street_number" inArray:lines ofType:@"long_name"];
+        _number = [self component:@"street_number" inArray:lines ofType:@"long_name"];
+        _street = [self component:@"route" inArray:lines ofType:@"long_name"];
         _locality = [self component:@"locality" inArray:lines ofType:@"long_name"];
         _subLocality = [self component:@"subLocality" inArray:lines ofType:@"long_name"];
         _administrativeArea = [self component:@"administrative_area_level_1" inArray:lines ofType:@"long_name"];
@@ -112,7 +116,12 @@ static NSString * const LMLinesKey               = @"lines";
 - (NSString *)component:(NSString *)component inArray:(NSArray *)array ofType:(NSString *)type
 {
     NSInteger index = [array indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-        return [(NSString *)([[obj objectForKey:@"types"] firstObject]) isEqualToString:component];
+        for (NSString *type in ((NSArray *)[obj objectForKey:@"types"])) {
+            if ([type isEqualToString:component]) {
+                return YES;
+            }
+        }
+        return NO;
     }];
     
     if (index == NSNotFound) {
