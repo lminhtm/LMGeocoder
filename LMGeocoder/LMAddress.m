@@ -116,7 +116,12 @@ static NSString * const LMLinesKey               = @"lines";
 - (NSString *)component:(NSString *)component inArray:(NSArray *)array ofType:(NSString *)type
 {
     NSInteger index = [array indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-        return [(NSString *)([[obj objectForKey:@"types"] firstObject]) isEqualToString:component];
+        for (NSString *type in ((NSArray *)[obj objectForKey:@"types"])) {
+            if ([type isEqualToString:component]) {
+                return YES;
+            }
+        }
+        return NO;
     }];
     
     if (index == NSNotFound) {
