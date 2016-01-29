@@ -15,6 +15,8 @@
 #define kGoogleAPIGeocodingURL(address)            [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", address];
 #define kGoogleAPIURLWithKey(url, key)             [NSString stringWithFormat:@"%@&key=%@", url, key];
 #define kGoogleAPIURLWithDefaultLanguage(url, key) [NSString stringWithFormat:@"%@&language=%@", url, key];
+#define kGoogleAPIURLWithDefaultCountry(url, key)  [NSString stringWithFormat:@"%@&components=country:%@", url, key];
+#define kGoogleAPIURLWithBounds(url, key)          [NSString stringWithFormat:@"%@&bounds=%@", url, key];
 
 @interface LMGeocoder ()
 
@@ -101,6 +103,12 @@
                 if (self.language != nil) {
                     urlString = kGoogleAPIURLWithDefaultLanguage(urlString, self.language)
                 }
+                if (self.country != nil) {
+                    urlString = kGoogleAPIURLWithDefaultCountry(urlString, self.country)
+                }
+                if (self.bounds != nil) {
+                    urlString = kGoogleAPIURLWithBounds(urlString, self.bounds)
+                }
                 
                 [self buildConnectionFromURLString:urlString];
                 break;
@@ -167,6 +175,9 @@
                 NSString *urlString = kGoogleAPIReverseGeocodingURL(self.requestedCoordinate.latitude, self.requestedCoordinate.longitude);
                 if (self.googleAPIKey != nil) {
                     urlString = kGoogleAPIURLWithKey(urlString, self.googleAPIKey)
+                }
+                if (self.language != nil) {
+                    urlString = kGoogleAPIURLWithDefaultLanguage(urlString, self.language)
                 }
 
                 [self buildConnectionFromURLString:urlString];

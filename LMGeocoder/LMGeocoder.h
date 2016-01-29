@@ -53,6 +53,17 @@ typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
 @property (nonatomic, strong) NSString *language;
 
 /*!
+ *  To set default country for search, https://en.wikipedia.org/wiki/ISO_3166-1
+ */
+@property (nonatomic, strong) NSString *country;
+
+/*!
+ *  To set default bounds for search, https://en.wikipedia.org/wiki/ISO_3166-1
+ */
+@property (nonatomic, strong) NSString *bounds;
+
+
+/*!
  *  Get shared instance.
  */
 + (LMGeocoder *)sharedInstance;
