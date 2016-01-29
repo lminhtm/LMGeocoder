@@ -48,6 +48,11 @@ typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
 @property (nonatomic, strong) NSString *googleAPIKey;
 
 /*!
+ *  To set default language, https://developers.google.com/maps/faq#languagesupport
+ */
+@property (nonatomic, strong) NSString *language;
+
+/*!
  *  Get shared instance.
  */
 + (LMGeocoder *)sharedInstance;
