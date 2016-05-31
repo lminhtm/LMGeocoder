@@ -9,29 +9,33 @@
 #import "LMAddress.h"
 #import "LMGeocoder.h"
 
-static NSString * const LMLatitudeKey            = @"latitude";
-static NSString * const LMLongitudeKey           = @"longitude";
-static NSString * const LMThoroughfareKey        = @"thoroughfare";
-static NSString * const LMLocalityKey            = @"locality";
-static NSString * const LMSubLocalityKey         = @"subLocality";
-static NSString * const LMAdministrativeAreaKey  = @"administrativeArea";
-static NSString * const LMPostalCodeKey          = @"postalCode";
-static NSString * const LMCountryKey             = @"country";
-static NSString * const LMISOCountryCodeKey      = @"ISOcountryCode";
-static NSString * const LMFormattedAddressKey    = @"formattedAddress";
-static NSString * const LMLinesKey               = @"lines";
+static NSString * const LMLatitudeKey               = @"latitude";
+static NSString * const LMLongitudeKey              = @"longitude";
+static NSString * const LMStreetNumberKey           = @"streetNumber";
+static NSString * const LMRouteKey                  = @"route";
+static NSString * const LMLocalityKey               = @"locality";
+static NSString * const LMSubLocalityKey            = @"subLocality";
+static NSString * const LMAdministrativeAreaKey     = @"administrativeArea";
+static NSString * const LMSubAdministrativeAreaKey  = @"subAdministrativeArea";
+static NSString * const LMPostalCodeKey             = @"postalCode";
+static NSString * const LMCountryKey                = @"country";
+static NSString * const LMISOCountryCodeKey         = @"ISOcountryCode";
+static NSString * const LMFormattedAddressKey       = @"formattedAddress";
+static NSString * const LMLinesKey                  = @"lines";
 
-#define allStringKeys @[LMThoroughfareKey, LMLocalityKey, LMSubLocalityKey, \
-                        LMAdministrativeAreaKey, LMPostalCodeKey, LMCountryKey, \
-                        LMISOCountryCodeKey, LMFormattedAddressKey]
+#define allStringKeys @[LMStreetNumberKey, LMRouteKey, LMLocalityKey, LMSubLocalityKey, \
+                        LMAdministrativeAreaKey, LMSubAdministrativeAreaKey, LMPostalCodeKey, \
+                        LMCountryKey, LMISOCountryCodeKey, LMFormattedAddressKey]
 
 @implementation LMAddress
 
 @synthesize coordinate = _coordinate;
-@synthesize thoroughfare = _thoroughfare;
+@synthesize streetNumber = _streetNumber;
+@synthesize route = _route;
 @synthesize locality = _locality;
 @synthesize subLocality = _subLocality;
 @synthesize administrativeArea = _administrativeArea;
+@synthesize subAdministrativeArea = _subAdministrativeArea;
 @synthesize postalCode = _postalCode;
 @synthesize country = _country;
 @synthesize ISOcountryCode = _ISOcountryCode;
@@ -73,10 +77,11 @@ static NSString * const LMLinesKey               = @"lines";
         NSString *formattedAddress = [lines componentsJoinedByString:@", "];
         
         _coordinate = placemark.location.coordinate;
-        _thoroughfare = placemark.thoroughfare;
+        _streetNumber = placemark.thoroughfare;
         _locality = placemark.locality;
         _subLocality = placemark.subLocality;
         _administrativeArea = placemark.administrativeArea;
+        _subAdministrativeArea = placemark.subAdministrativeArea;
         _postalCode = placemark.postalCode;
         _country = placemark.country;
         _ISOcountryCode = placemark.ISOcountryCode;
@@ -97,10 +102,12 @@ static NSString * const LMLinesKey               = @"lines";
         double lng = [locationDict[@"geometry"][@"location"][@"lng"] doubleValue];
         
         _coordinate = CLLocationCoordinate2DMake(lat, lng);
-        _thoroughfare = [self component:@"street_number" inArray:lines ofType:@"long_name"];
+        _streetNumber = [self component:@"street_number" inArray:lines ofType:@"long_name"];
+        _route = [self component:@"route" inArray:lines ofType:@"long_name"];
         _locality = [self component:@"locality" inArray:lines ofType:@"long_name"];
-        _subLocality = [self component:@"subLocality" inArray:lines ofType:@"long_name"];
+        _subLocality = [self component:@"sublocality" inArray:lines ofType:@"long_name"];
         _administrativeArea = [self component:@"administrative_area_level_1" inArray:lines ofType:@"long_name"];
+        _subAdministrativeArea = [self component:@"administrative_area_level_2" inArray:lines ofType:@"long_name"];
         _postalCode = [self component:@"postal_code" inArray:lines ofType:@"short_name"];
         _country = [self component:@"country" inArray:lines ofType:@"long_name"];
         _ISOcountryCode = [self component:@"country" inArray:lines ofType:@"short_name"];
@@ -173,8 +180,7 @@ static NSString * const LMLinesKey               = @"lines";
     self = [self init];
     if (self) {
         // Load doubles into coordinate
-        _coordinate = CLLocationCoordinate2DMake([aDecoder decodeDoubleForKey:LMLatitudeKey],
-                                                 [aDecoder decodeDoubleForKey:LMLongitudeKey]);
+        _coordinate = CLLocationCoordinate2DMake([aDecoder decodeDoubleForKey:LMLatitudeKey], [aDecoder decodeDoubleForKey:LMLongitudeKey]);
         
         // Load the strings into properties by name
         for (NSString *key in allStringKeys) {

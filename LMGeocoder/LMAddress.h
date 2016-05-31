@@ -23,7 +23,12 @@
 /*!
  *  The precise street address.
  */
-@property (nonatomic, readonly, copy) NSString *thoroughfare;
+@property (nonatomic, readonly, copy) NSString *streetNumber;
+
+/*!
+ *  The named route
+ */
+@property (nonatomic, readonly, copy) NSString *route;
 
 /*!
  *  The incorporated city or town political entity.
@@ -39,6 +44,11 @@
  *  The civil entity below the country level.
  */
 @property (nonatomic, readonly, copy) NSString *administrativeArea;
+
+/*!
+ *  The additional administrative area information
+ */
+@property (nonatomic, readonly, copy, nullable) NSString *subAdministrativeArea;
 
 /*!
  *  The Postal/Zip code.
