@@ -178,7 +178,8 @@ static NSString * const LMLinesKey                  = @"lines";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [self init];
-    if (self) {
+    if (self)
+    {
         // Load doubles into coordinate
         _coordinate = CLLocationCoordinate2DMake([aDecoder decodeDoubleForKey:LMLatitudeKey], [aDecoder decodeDoubleForKey:LMLongitudeKey]);
         

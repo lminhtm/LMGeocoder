@@ -69,7 +69,7 @@ typedef void (^LMGeocodeCallback) (NSArray<LMAddress *> * _Nullable results,  NS
  */
 - (void)geocodeAddressString:(nonnull NSString *)addressString
                      service:(LMGeocoderService)service
-           completionHandler:(nonnull LMGeocodeCallback)handler;
+           completionHandler:(nullable LMGeocodeCallback)handler;
 
 /*!
  *  Submits a reverse-geocoding request for the specified coordinate.
@@ -83,7 +83,7 @@ typedef void (^LMGeocodeCallback) (NSArray<LMAddress *> * _Nullable results,  NS
  */
 - (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate
                          service:(LMGeocoderService)service
-               completionHandler:(nonnull LMGeocodeCallback)handler;
+               completionHandler:(nullable LMGeocodeCallback)handler;
 
 /*!
  *  Cancels a pending geocoding request.

@@ -23,12 +23,12 @@
 /*!
  *  The precise street address.
  */
-@property (nonatomic, readonly, copy) NSString *streetNumber;
+@property (nonatomic, readonly, copy, nullable) NSString *streetNumber;
 
 /*!
- *  The named route
+ *  The named route.
  */
-@property (nonatomic, readonly, copy) NSString *route;
+@property (nonatomic, readonly, copy, nullable) NSString *route;
 
 /*!
  *  The incorporated city or town political entity.
@@ -46,7 +46,7 @@
 @property (nonatomic, readonly, copy, nullable) NSString *administrativeArea;
 
 /*!
- *  The additional administrative area information
+ *  The additional administrative area information.
  */
 @property (nonatomic, readonly, copy, nullable) NSString *subAdministrativeArea;
 
@@ -73,7 +73,7 @@
 /*!
  *  An array of NSString containing formatted lines of the address.
  */
-@property(nonatomic, readonly, copy, nullable) NSArray<NSString *> *lines;
+@property (nonatomic, readonly, copy, nullable) NSArray<NSString *> *lines;
 
 /*!
  *  Initialize with response from server
