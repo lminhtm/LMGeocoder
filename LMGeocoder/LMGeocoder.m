@@ -64,10 +64,6 @@
                      service:(LMGeocoderService)service
            completionHandler:(LMGeocodeCallback)handler
 {
-    // Check isGeocoding
-    if (_isGeocoding) {
-        return;
-    }
     _isGeocoding = YES;
     
     // Store parameters
@@ -130,10 +126,6 @@
                          service:(LMGeocoderService)service
                completionHandler:(LMGeocodeCallback)handler
 {
-    // Check isGeocoding
-    if (_isGeocoding) {
-        return;
-    }
     _isGeocoding = YES;
     
     // Store parameters
@@ -163,7 +155,7 @@
                 if (self.googleAPIKey != nil) {
                     urlString = kGoogleAPIURLWithKey(urlString, self.googleAPIKey)
                 }
-
+                
                 [self buildConnectionFromURLString:urlString];
                 break;
             }
@@ -274,11 +266,9 @@
     
     _isGeocoding = NO;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.completionHandler) {
-            self.completionHandler(finalResults, nil);
-        }
-    });
+    if (self.completionHandler) {
+        self.completionHandler(finalResults, nil);
+    }
 }
 
 #pragma mark - SUPPORT
@@ -287,11 +277,9 @@
 {
     _isGeocoding = NO;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.completionHandler) {
-            self.completionHandler(nil, error);
-        }
-    });
+    if (self.completionHandler) {
+        self.completionHandler(nil, error);
+    }
 }
 
 @end
