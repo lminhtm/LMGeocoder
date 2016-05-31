@@ -33,17 +33,17 @@
 /*!
  *  The incorporated city or town political entity.
  */
-@property (nonatomic, readonly, copy) NSString *locality;
+@property (nonatomic, readonly, copy, nullable) NSString *locality;
 
 /*!
  *  The first-order civil entity below a localit.
  */
-@property (nonatomic, readonly, copy) NSString *subLocality;
+@property (nonatomic, readonly, copy, nullable) NSString *subLocality;
 
 /*!
  *  The civil entity below the country level.
  */
-@property (nonatomic, readonly, copy) NSString *administrativeArea;
+@property (nonatomic, readonly, copy, nullable) NSString *administrativeArea;
 
 /*!
  *  The additional administrative area information
@@ -53,27 +53,27 @@
 /*!
  *  The Postal/Zip code.
  */
-@property (nonatomic, readonly, copy) NSString *postalCode;
+@property (nonatomic, readonly, copy, nullable) NSString *postalCode;
 
 /*!
  *  The country name.
  */
-@property (nonatomic, readonly, copy) NSString *country;
+@property (nonatomic, readonly, copy, nullable) NSString *country;
 
 /*!
  *  The ISO country code.
  */
-@property (nonatomic, readonly, copy) NSString *ISOcountryCode;
+@property (nonatomic, readonly, copy, nullable) NSString *ISOcountryCode;
 
 /*!
  *  The formatted address.
  */
-@property (nonatomic, readonly, copy) NSString *formattedAddress;
+@property (nonatomic, readonly, copy, nullable) NSString *formattedAddress;
 
 /*!
  *  An array of NSString containing formatted lines of the address.
  */
-@property(nonatomic, readonly, copy) NSArray *lines;
+@property(nonatomic, readonly, copy, nullable) NSArray<NSString *> *lines;
 
 /*!
  *  Initialize with response from server
@@ -83,6 +83,6 @@
  *
  *  @return object with all data set for use
  */
-- (id)initWithLocationData:(id)locationData forServiceType:(int)serviceType;
+- (nonnull id)initWithLocationData:(nonnull id)locationData forServiceType:(int)serviceType;
 
 @end
