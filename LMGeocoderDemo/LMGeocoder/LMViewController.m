@@ -107,20 +107,15 @@
                                                   service:kLMGeocoderGoogleService
                                         completionHandler:^(NSArray *results, NSError *error) {
                                             
-                                            if (results.count && !error)
-                                            {
-                                                LMAddress *address = [results firstObject];
-                                                
-                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                if (results.count && !error) {
+                                                    LMAddress *address = [results firstObject];
                                                     self.addressLabel.text = address.formattedAddress;
-                                                });
-                                            }
-                                            else
-                                            {
-                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                }
+                                                else {
                                                     self.addressLabel.text = @"-";
-                                                });
-                                            }
+                                                }
+                                            });
                                         }];
 }
 
