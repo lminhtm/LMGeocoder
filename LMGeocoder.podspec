@@ -4,6 +4,7 @@ s.name              = 'LMGeocoder'
 s.version           = '1.0.6'
 s.summary           = 'Simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.'
 s.homepage          = 'https://github.com/lminhtm/LMGeocoder'
+s.platform          = :ios, '7.0'
 s.license           = {
 :type => 'MIT',
 :file => 'LICENSE.txt'
