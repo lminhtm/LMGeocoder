@@ -10,6 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "LMAddress.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  *  LMGeocoder service API.
  */
@@ -30,7 +32,7 @@ typedef NS_ENUM(NSInteger, LMGeocoderErrorCode){
 /*!
  *  Handler that reports a geocoding response, or error.
  */
-typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
+typedef void (^LMGeocodeCallback) (NSArray<LMAddress *> * _Nullable results,  NSError * _Nullable error);
 
 /*!
  *  Exposes a service for geocoding and reverse geocoding.
@@ -45,7 +47,7 @@ typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
 /*!
  *  To set google API key
  */
-@property (nonatomic, strong) NSString *googleAPIKey;
+@property (nonatomic, strong, nullable) NSString *googleAPIKey;
 
 /*!
  *  To set default language, https://developers.google.com/maps/faq#languagesupport
@@ -85,7 +87,20 @@ typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
  */
 - (void)geocodeAddressString:(NSString *)addressString
                      service:(LMGeocoderService)service
-           completionHandler:(LMGeocodeCallback)handler;
+           completionHandler:(nullable LMGeocodeCallback)handler;
+
+/*!
+ *  Submits a synchronous forward-geocoding request using the specified string.
+ *
+ *  @param addressString The string describing the location you want to look up.
+ *  @param service       The service API used to geocode.
+ *  @param error         The error.
+ *
+ *  @return The geocode results.
+ */
+- (nullable NSArray *)geocodeAddressString:(NSString *)addressString
+                                   service:(LMGeocoderService)service
+                                     error:(NSError **)error;
 
 /*!
  *  Submits a reverse-geocoding request for the specified coordinate.
@@ -99,7 +114,20 @@ typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
  */
 - (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate
                          service:(LMGeocoderService)service
-               completionHandler:(LMGeocodeCallback)handler;
+               completionHandler:(nullable LMGeocodeCallback)handler;
+
+/*!
+ *  Submits a synchronous reverse-geocoding request for the specified coordinate.
+ *
+ *  @param coordinate The coordinate to look up.
+ *  @param service    The service API used to geocode.
+ *  @param error      The error.
+ *
+ *  @return The reverse geocode results.
+ */
+- (nullable NSArray *)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate
+                                       service:(LMGeocoderService)service
+                                         error:(NSError **)error;
 
 /*!
  *  Cancels a pending geocoding request.
@@ -107,3 +135,5 @@ typedef void (^LMGeocodeCallback) (NSArray *results, NSError *error);
 - (void)cancelGeocode;
 
 @end
+
+NS_ASSUME_NONNULL_END
