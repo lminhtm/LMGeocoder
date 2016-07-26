@@ -119,14 +119,15 @@ static NSString * const LMLinesKey                  = @"lines";
 - (NSString *)component:(NSString *)component inArray:(NSArray *)array ofType:(NSString *)type
 {
     NSInteger index = [array indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-        return [(NSString *)([[obj objectForKey:@"types"] firstObject]) isEqualToString:component];
+        
+        NSArray *types = [obj objectForKey:@"types"];
+        if (types.count) {
+            return [types containsObject:component];
+        }
+        return NO;
     }];
     
-    if (index == NSNotFound) {
-        return nil;
-    }
-    
-    if (index >= array.count) {
+    if (index == NSNotFound || index >= array.count) {
         return nil;
     }
     
