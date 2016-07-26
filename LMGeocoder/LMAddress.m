@@ -96,23 +96,23 @@ static NSString * const LMLinesKey                  = @"lines";
     {
         NSDictionary *locationDict = (NSDictionary *)locationData;
         
-        NSArray *lines = locationDict[@"address_components"];
+        NSArray *addressComponents = locationDict[@"address_components"];
         NSString *formattedAddress = locationDict[@"formatted_address"];
         double lat = [locationDict[@"geometry"][@"location"][@"lat"] doubleValue];
         double lng = [locationDict[@"geometry"][@"location"][@"lng"] doubleValue];
         
         _coordinate = CLLocationCoordinate2DMake(lat, lng);
-        _streetNumber = [self component:@"street_number" inArray:lines ofType:@"long_name"];
-        _route = [self component:@"route" inArray:lines ofType:@"long_name"];
-        _locality = [self component:@"locality" inArray:lines ofType:@"long_name"];
-        _subLocality = [self component:@"sublocality" inArray:lines ofType:@"long_name"];
-        _administrativeArea = [self component:@"administrative_area_level_1" inArray:lines ofType:@"long_name"];
-        _subAdministrativeArea = [self component:@"administrative_area_level_2" inArray:lines ofType:@"long_name"];
-        _postalCode = [self component:@"postal_code" inArray:lines ofType:@"short_name"];
-        _country = [self component:@"country" inArray:lines ofType:@"long_name"];
-        _ISOcountryCode = [self component:@"country" inArray:lines ofType:@"short_name"];
+        _streetNumber = [self component:@"street_number" inArray:addressComponents ofType:@"long_name"];
+        _route = [self component:@"route" inArray:addressComponents ofType:@"long_name"];
+        _locality = [self component:@"locality" inArray:addressComponents ofType:@"long_name"];
+        _subLocality = [self component:@"sublocality" inArray:addressComponents ofType:@"long_name"];
+        _administrativeArea = [self component:@"administrative_area_level_1" inArray:addressComponents ofType:@"long_name"];
+        _subAdministrativeArea = [self component:@"administrative_area_level_2" inArray:addressComponents ofType:@"long_name"];
+        _postalCode = [self component:@"postal_code" inArray:addressComponents ofType:@"short_name"];
+        _country = [self component:@"country" inArray:addressComponents ofType:@"long_name"];
+        _ISOcountryCode = [self component:@"country" inArray:addressComponents ofType:@"short_name"];
         _formattedAddress = formattedAddress;
-        _lines = lines;
+        _lines = [formattedAddress componentsSeparatedByString:@", "];
     }
 }
 
