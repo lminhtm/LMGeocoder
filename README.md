@@ -47,6 +47,11 @@ pod 'LMGeocoder'
                                     }];
 ```
 
+#### Cancel Geocode
+```ObjC
+[[LMGeocoder sharedInstance] cancelGeocode];
+```
+
 See sample Xcode project in `/LMGeocoderDemo`
 
 ## License
