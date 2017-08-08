@@ -76,6 +76,11 @@
 @property (nonatomic, readonly, copy, nullable) NSArray<NSString *> *lines;
 
 /*!
+ * Raw google address
+ */
+@property (nonatomic, readonly, copy, nullable) NSArray *googleAddressComponents;
+
+/*!
  *  Initialize with response from server
  *
  *  @param locationData response object recieved from server

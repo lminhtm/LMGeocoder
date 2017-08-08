@@ -41,6 +41,7 @@ static NSString * const LMLinesKey                  = @"lines";
 @synthesize ISOcountryCode = _ISOcountryCode;
 @synthesize formattedAddress = _formattedAddress;
 @synthesize lines = _lines;
+@synthesize googleAddressComponents = _googleAddressComponents;
 
 #pragma mark - INIT
 
@@ -113,7 +114,12 @@ static NSString * const LMLinesKey                  = @"lines";
         _ISOcountryCode = [self component:@"country" inArray:addressComponents ofType:@"short_name"];
         _formattedAddress = formattedAddress;
         _lines = [formattedAddress componentsSeparatedByString:@", "];
+        _googleAddressComponents = addressComponents;
     }
+}
+
+- (NSString *)component:(NSString *)component ofType:(NSString *)type {
+    return [self component:component inArray:_googleAddressComponents ofType:type];
 }
 
 - (NSString *)component:(NSString *)component inArray:(NSArray *)array ofType:(NSString *)type
