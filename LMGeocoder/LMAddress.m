@@ -17,6 +17,7 @@ static NSString * const LMLocalityKey               = @"locality";
 static NSString * const LMSubLocalityKey            = @"subLocality";
 static NSString * const LMAdministrativeAreaKey     = @"administrativeArea";
 static NSString * const LMSubAdministrativeAreaKey  = @"subAdministrativeArea";
+static NSString * const LMNeighborhoodKey           = @"neighborhood";
 static NSString * const LMPostalCodeKey             = @"postalCode";
 static NSString * const LMCountryKey                = @"country";
 static NSString * const LMISOCountryCodeKey         = @"ISOcountryCode";
@@ -24,7 +25,7 @@ static NSString * const LMFormattedAddressKey       = @"formattedAddress";
 static NSString * const LMLinesKey                  = @"lines";
 
 #define allStringKeys @[LMStreetNumberKey, LMRouteKey, LMLocalityKey, LMSubLocalityKey, \
-                        LMAdministrativeAreaKey, LMSubAdministrativeAreaKey, LMPostalCodeKey, \
+                        LMAdministrativeAreaKey, LMSubAdministrativeAreaKey, LMNeighborhoodKey, LMPostalCodeKey, \
                         LMCountryKey, LMISOCountryCodeKey, LMFormattedAddressKey]
 
 @implementation LMAddress
@@ -36,11 +37,13 @@ static NSString * const LMLinesKey                  = @"lines";
 @synthesize subLocality = _subLocality;
 @synthesize administrativeArea = _administrativeArea;
 @synthesize subAdministrativeArea = _subAdministrativeArea;
+@synthesize neighborhood = _neighborhood;
 @synthesize postalCode = _postalCode;
 @synthesize country = _country;
 @synthesize ISOcountryCode = _ISOcountryCode;
 @synthesize formattedAddress = _formattedAddress;
 @synthesize lines = _lines;
+@synthesize rawSource = _rawSource;
 
 #pragma mark - INIT
 
@@ -87,6 +90,7 @@ static NSString * const LMLinesKey                  = @"lines";
         _ISOcountryCode = placemark.ISOcountryCode;
         _formattedAddress = formattedAddress;
         _lines = lines;
+        _rawSource = placemark;
     }
 }
 
@@ -108,11 +112,13 @@ static NSString * const LMLinesKey                  = @"lines";
         _subLocality = [self component:@"sublocality" inArray:addressComponents ofType:@"long_name"];
         _administrativeArea = [self component:@"administrative_area_level_1" inArray:addressComponents ofType:@"long_name"];
         _subAdministrativeArea = [self component:@"administrative_area_level_2" inArray:addressComponents ofType:@"long_name"];
+        _neighborhood = [self component:@"neighborhood" inArray:addressComponents ofType:@"long_name"];
         _postalCode = [self component:@"postal_code" inArray:addressComponents ofType:@"short_name"];
         _country = [self component:@"country" inArray:addressComponents ofType:@"long_name"];
         _ISOcountryCode = [self component:@"country" inArray:addressComponents ofType:@"short_name"];
         _formattedAddress = formattedAddress;
         _lines = [formattedAddress componentsSeparatedByString:@", "];
+        _rawSource = locationDict;
     }
 }
 

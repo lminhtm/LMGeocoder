@@ -51,6 +51,11 @@
 @property (nonatomic, readonly, copy, nullable) NSString *subAdministrativeArea;
 
 /*!
+ *  The neighborhood information.
+ */
+@property (nonatomic, readonly, copy, nullable) NSString *neighborhood;
+
+/*!
  *  The Postal/Zip code.
  */
 @property (nonatomic, readonly, copy, nullable) NSString *postalCode;
@@ -74,6 +79,11 @@
  *  An array of NSString containing formatted lines of the address.
  */
 @property (nonatomic, readonly, copy, nullable) NSArray<NSString *> *lines;
+
+/*!
+ * Raw source object.
+ */
+@property (nonatomic, readonly, strong, nullable) NSObject *rawSource;
 
 /*!
  *  Initialize with response from server
