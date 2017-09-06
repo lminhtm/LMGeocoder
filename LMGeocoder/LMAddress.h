@@ -31,6 +31,12 @@
 @property (nonatomic, readonly, copy, nullable) NSString *route;
 
 /*!
+ *  Sometime it incorporated known name of a city or town ( London ).
+ */
+
+@property (nonatomic, readonly, copy, nullable) NSString *postalTown;
+
+/*!
  *  The incorporated city or town political entity.
  */
 @property (nonatomic, readonly, copy, nullable) NSString *locality;
