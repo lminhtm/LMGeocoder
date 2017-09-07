@@ -13,6 +13,7 @@ static NSString * const LMLatitudeKey               = @"latitude";
 static NSString * const LMLongitudeKey              = @"longitude";
 static NSString * const LMStreetNumberKey           = @"streetNumber";
 static NSString * const LMRouteKey                  = @"route";
+static NSString * const LMPostalTownKey             = @"postal_town";
 static NSString * const LMLocalityKey               = @"locality";
 static NSString * const LMSubLocalityKey            = @"subLocality";
 static NSString * const LMAdministrativeAreaKey     = @"administrativeArea";
@@ -24,7 +25,7 @@ static NSString * const LMISOCountryCodeKey         = @"ISOcountryCode";
 static NSString * const LMFormattedAddressKey       = @"formattedAddress";
 static NSString * const LMLinesKey                  = @"lines";
 
-#define allStringKeys @[LMStreetNumberKey, LMRouteKey, LMLocalityKey, LMSubLocalityKey, \
+#define allStringKeys @[LMStreetNumberKey, LMRouteKey, LMPostalTownKey, LMLocalityKey, LMSubLocalityKey, \
                         LMAdministrativeAreaKey, LMSubAdministrativeAreaKey, LMNeighborhoodKey, LMPostalCodeKey, \
                         LMCountryKey, LMISOCountryCodeKey, LMFormattedAddressKey]
 
@@ -33,6 +34,7 @@ static NSString * const LMLinesKey                  = @"lines";
 @synthesize coordinate = _coordinate;
 @synthesize streetNumber = _streetNumber;
 @synthesize route = _route;
+@synthesize postalTown = _postalTown;
 @synthesize locality = _locality;
 @synthesize subLocality = _subLocality;
 @synthesize administrativeArea = _administrativeArea;
@@ -108,6 +110,7 @@ static NSString * const LMLinesKey                  = @"lines";
         _coordinate = CLLocationCoordinate2DMake(lat, lng);
         _streetNumber = [self component:@"street_number" inArray:addressComponents ofType:@"long_name"];
         _route = [self component:@"route" inArray:addressComponents ofType:@"long_name"];
+        _postalTown = [self component:LMPostalTownKey inArray:addressComponents ofType:@"long_name"];
         _locality = [self component:@"locality" inArray:addressComponents ofType:@"long_name"];
         _subLocality = [self component:@"sublocality" inArray:addressComponents ofType:@"long_name"];
         _administrativeArea = [self component:@"administrative_area_level_1" inArray:addressComponents ofType:@"long_name"];
