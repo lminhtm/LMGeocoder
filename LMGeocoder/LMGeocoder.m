@@ -273,31 +273,39 @@ static NSString * const kLMGeocoderErrorDomain = @"LMGeocoderError";
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     self.googleGeocoderTask = [session dataTaskWithRequest:request
                                          completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                             
-                                             if (!error && data)
-                                             {
-                                                 // Request successful --> Parse response to JSON
-                                                 NSError *parsingError = nil;
-                                                 NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
-                                                                                                        options:NSJSONReadingAllowFragments
-                                                                                                          error:&parsingError];
-                                                 if (!parsingError && result)
+                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                 if (!error && data)
                                                  {
-                                                     // Parse successful --> Check status value
-                                                     NSString *status = [result valueForKey:@"status"];
-                                                     if ([status isEqualToString:@"OK"])
+                                                     // Request successful --> Parse response to JSON
+                                                     NSError *parsingError = nil;
+                                                     NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                            options:NSJSONReadingAllowFragments
+                                                                                                              error:&parsingError];
+                                                     if (!parsingError && result)
                                                      {
-                                                         // Status OK --> Parse response results
-                                                         NSArray *locationDicts = [result objectForKey:@"results"];
-                                                         NSArray *finalResults = [self parseGeocodingResponseResults:locationDicts service:kLMGeocoderGoogleService];
-                                                         
-                                                         if (handler) {
-                                                             handler(finalResults, nil);
+                                                         // Parse successful --> Check status value
+                                                         NSString *status = [result valueForKey:@"status"];
+                                                         if ([status isEqualToString:@"OK"])
+                                                         {
+                                                             // Status OK --> Parse response results
+                                                             NSArray *locationDicts = [result objectForKey:@"results"];
+                                                             NSArray *finalResults = [self parseGeocodingResponseResults:locationDicts service:kLMGeocoderGoogleService];
+                                                             
+                                                             if (handler) {
+                                                                 handler(finalResults, nil);
+                                                             }
+                                                         }
+                                                         else
+                                                         {
+                                                             // Other statuses --> Return error
+                                                             if (handler) {
+                                                                 handler(nil, error);
+                                                             }
                                                          }
                                                      }
                                                      else
                                                      {
-                                                         // Other statuses --> Return error
+                                                         // Parse failed --> Return error
                                                          if (handler) {
                                                              handler(nil, error);
                                                          }
@@ -305,19 +313,12 @@ static NSString * const kLMGeocoderErrorDomain = @"LMGeocoderError";
                                                  }
                                                  else
                                                  {
-                                                     // Parse failed --> Return error
+                                                     // Request failed --> Return error
                                                      if (handler) {
                                                          handler(nil, error);
                                                      }
                                                  }
-                                             }
-                                             else
-                                             {
-                                                 // Request failed --> Return error
-                                                 if (handler) {
-                                                     handler(nil, error);
-                                                 }
-                                             }
+                                             });
                                          }];
     [self.googleGeocoderTask resume];
 }
