@@ -204,7 +204,10 @@ static NSString * const kLMGeocoderErrorDomain = @"LMGeocoderError";
                                              
                                              if (!error && placemarks.count) {
                                                  // Request successful --> Parse response results
-                                                 [self parseGeocodingResponseResults:placemarks service:kLMGeocoderAppleService];
+                                                NSArray *parsedResults = [self parseGeocodingResponseResults:placemarks service:kLMGeocoderAppleService];
+                                                 if (handler) {
+                                                     handler(parsedResults, nil);
+                                                 }
                                              }
                                              else {
                                                  // Request failed --> Return error
