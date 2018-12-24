@@ -77,48 +77,35 @@ static NSString * const kLMGeocoderErrorDomain = @"LMGeocoderError";
     else
     {
         // Valid address string --> Check service
-        switch (service)
+        if (service == kLMGeocoderGoogleService)
         {
-            case kLMGeocoderGoogleService:
-            {
-                // Geocode using Google service
-                NSString *urlString = kGoogleAPIGeocodingURL(addressString);
-                if (self.googleAPIKey != nil) {
-                    urlString = kGoogleAPIURLWithKey(urlString, self.googleAPIKey)
-                }
-                [self buildAsynchronousRequestFromURLString:urlString
-                                          completionHandler:^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
-                                              
-                                              _isGeocoding = NO;
-                                              if (handler) {
-                                                  handler(results, error);
-                                              }
-                                          }];
-                break;
+            // Geocode using Google service
+            NSString *urlString = kGoogleAPIGeocodingURL(addressString);
+            if (self.googleAPIKey != nil) {
+                urlString = kGoogleAPIURLWithKey(urlString, self.googleAPIKey)
             }
-            case kLMGeocoderAppleService:
-            {
-                // Geocode using Apple service
-                [self.appleGeocoder geocodeAddressString:addressString
-                                       completionHandler:^(NSArray *placemarks, NSError *error) {
-                                           
-                                           _isGeocoding = NO;
-                                           
-                                           if (!error && placemarks.count) {
-                                               // Request successful --> Parse response results
-                                               [self parseGeocodingResponseResults:placemarks service:kLMGeocoderAppleService];
-                                           }
-                                           else {
-                                               // Request failed --> Return error
-                                               if (handler) {
-                                                   handler(nil, error);
-                                               }
-                                           }
-                                       }];
-                break;
-            }
-            default:
-                break;
+            [self buildAsynchronousRequestFromURLString:urlString
+                                      completionHandler:^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
+                                          
+                                          _isGeocoding = NO;
+                                          if (handler) {
+                                              handler(results, error);
+                                          }
+                                      }];
+        }
+        else if (service == kLMGeocoderAppleService)
+        {
+            // Geocode using Apple service
+            [self.appleGeocoder geocodeAddressString:addressString
+                                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                                       
+                                       NSArray *results = [self parseGeocodingResponseResults:placemarks service:kLMGeocoderAppleService];
+                                       
+                                       _isGeocoding = NO;
+                                       if (handler) {
+                                           handler(results, error);
+                                       }
+                                   }];
         }
     }
 }
@@ -173,50 +160,37 @@ static NSString * const kLMGeocoderErrorDomain = @"LMGeocoderError";
     else
     {
         // Valid location coordinate --> Check service
-        switch (service)
+        if (service == kLMGeocoderGoogleService)
         {
-            case kLMGeocoderGoogleService:
-            {
-                // Reverse geocode using Google service
-                NSString *urlString = kGoogleAPIReverseGeocodingURL(coordinate.latitude, coordinate.longitude);
-                if (self.googleAPIKey != nil) {
-                    urlString = kGoogleAPIURLWithKey(urlString, self.googleAPIKey)
-                }
-                [self buildAsynchronousRequestFromURLString:urlString
-                                          completionHandler:^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
-                                              
-                                              _isGeocoding = NO;
-                                              if (handler) {
-                                                  handler(results, error);
-                                              }
-                                          }];
-                break;
+            // Reverse geocode using Google service
+            NSString *urlString = kGoogleAPIReverseGeocodingURL(coordinate.latitude, coordinate.longitude);
+            if (self.googleAPIKey != nil) {
+                urlString = kGoogleAPIURLWithKey(urlString, self.googleAPIKey)
             }
-            case kLMGeocoderAppleService:
-            {
-                // Reverse geocode using Apple service
-                CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude
-                                                                  longitude:coordinate.longitude];
-                [self.appleGeocoder reverseGeocodeLocation:location
-                                         completionHandler:^(NSArray *placemarks, NSError *error) {
-                                             
-                                             _isGeocoding = NO;
-                                             
-                                             if (!error && placemarks.count) {
-                                                 // Request successful --> Parse response results
-                                                 [self parseGeocodingResponseResults:placemarks service:kLMGeocoderAppleService];
-                                             }
-                                             else {
-                                                 // Request failed --> Return error
-                                                 if (handler) {
-                                                     handler(nil, error);
-                                                 }
-                                             }
-                                         }];
-                break;
-            }
-            default:
-                break;
+            [self buildAsynchronousRequestFromURLString:urlString
+                                      completionHandler:^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
+                                          
+                                          _isGeocoding = NO;
+                                          if (handler) {
+                                              handler(results, error);
+                                          }
+                                      }];
+        }
+        else if (service == kLMGeocoderAppleService)
+        {
+            // Reverse geocode using Apple service
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude
+                                                              longitude:coordinate.longitude];
+            [self.appleGeocoder reverseGeocodeLocation:location
+                                     completionHandler:^(NSArray *placemarks, NSError *error) {
+                                         
+                                         NSArray *results = [self parseGeocodingResponseResults:placemarks service:kLMGeocoderAppleService];
+                                         
+                                         _isGeocoding = NO;
+                                         if (handler) {
+                                             handler(results, error);
+                                         }
+                                     }];
         }
     }
 }

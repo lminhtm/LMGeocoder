@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Z5-CE-aeB">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Z5-CE-aeB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,35 +18,31 @@
                         <viewControllerLayoutGuide type="bottom" id="rNY-e8-K6G"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UR4-YQ-DIX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNX-Ld-qda" userLabel="Background">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNX-Ld-qda" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVY-ZT-WEm" userLabel="Latitude View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVY-ZT-WEm" userLabel="Latitude View">
                                 <rect key="frame" x="20" y="50" width="560" height="69"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph2-RM-1sr">
-                                        <rect key="frame" x="5" y="5" width="550" height="23"/>
-                                        <animations/>
+                                        <rect key="frame" x="5" y="5" width="325" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="83D-JP-5Q3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRa-er-Q0q">
-                                        <rect key="frame" x="5" y="28" width="550" height="36"/>
-                                        <animations/>
+                                        <rect key="frame" x="5" y="28" width="325" height="36"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="fRa-er-Q0q" firstAttribute="leading" secondItem="ph2-RM-1sr" secondAttribute="leading" id="2Xl-I0-YgN"/>
                                     <constraint firstItem="ph2-RM-1sr" firstAttribute="leading" secondItem="qVY-ZT-WEm" secondAttribute="leading" constant="5" id="9De-ch-7R8"/>
@@ -54,28 +53,25 @@
                                     <constraint firstItem="ph2-RM-1sr" firstAttribute="top" secondItem="qVY-ZT-WEm" secondAttribute="top" constant="5" id="zi4-58-P8P"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pro-v7-oeG" userLabel="Longitude View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pro-v7-oeG" userLabel="Longitude View">
                                 <rect key="frame" x="20" y="129" width="560" height="69"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFE-VI-g2M">
-                                        <rect key="frame" x="5" y="5" width="550" height="23"/>
-                                        <animations/>
+                                        <rect key="frame" x="5" y="5" width="325" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="vgv-BT-nuU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5w-si-AVs">
-                                        <rect key="frame" x="5" y="28" width="550" height="36"/>
-                                        <animations/>
+                                        <rect key="frame" x="5" y="28" width="325" height="36"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="Y5w-si-AVs" firstAttribute="leading" secondItem="fFE-VI-g2M" secondAttribute="leading" id="99O-xH-WDI"/>
                                     <constraint firstItem="Y5w-si-AVs" firstAttribute="trailing" secondItem="fFE-VI-g2M" secondAttribute="trailing" id="CWS-wh-QrS"/>
@@ -100,33 +96,24 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBT-AC-rES" userLabel="Address View">
-                                <rect key="frame" x="20" y="488" width="560" height="62"/>
+                                <rect key="frame" x="20" y="555" width="335" height="62"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXa-OJ-NOL">
-                                        <rect key="frame" x="5" y="5" width="550" height="23"/>
-                                        <animations/>
+                                        <rect key="frame" x="5" y="5" width="325" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="hO9-UZ-mIL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="360" height="19"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Address..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="560" translatesAutoresizingMaskIntoConstraints="NO" id="ZWd-7q-gPI" customClass="LMLabel">
-                                        <rect key="frame" x="5" y="28" width="550" height="29"/>
-                                        <animations/>
+                                        <rect key="frame" x="5" y="28" width="325" height="29"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="17" width="360" height="28.5"/>
-                                        </variation>
                                     </label>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="ZWd-7q-gPI" firstAttribute="leading" secondItem="nXa-OJ-NOL" secondAttribute="leading" id="RtP-lX-Miu"/>
                                     <constraint firstItem="ZWd-7q-gPI" firstAttribute="top" secondItem="nXa-OJ-NOL" secondAttribute="bottom" id="Ud4-QE-bAB"/>
@@ -138,8 +125,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fNX-Ld-qda" secondAttribute="trailing" id="AkZ-5c-4ml"/>
                             <constraint firstItem="fNX-Ld-qda" firstAttribute="leading" secondItem="UR4-YQ-DIX" secondAttribute="leading" id="C6f-DJ-1uy"/>
