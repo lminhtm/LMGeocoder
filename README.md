@@ -1,26 +1,27 @@
 LMGeocoder
 ==============
-LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically from user input. It is blocked-based geocoder, use both Google Geocoding API and Apple iOS Geocoding Framework.
+LMGeocoder is a simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.
 
-![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot1.png)
+![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
 ## Features
 * Wrapper for Geocoding and Reverse geocoding with blocked-based coding.
 * Use both Google Geocoding API and Apple iOS Geocoding Framework.
 
 ## Requirements
-* iOS 7.0 or higher 
-* ARC
+* iOS 8.0 or higher
 
 ## Installation
-#### From CocoaPods
+LMGeocoder is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+#### Objective-C version
 ```ruby
 pod 'LMGeocoder'
 ```
-#### Manually
-* Drag the `LMGeocoder` folder into your project.
-* Add the `CoreLocation.framework` to your project.
-* Add `#import "LMGeocoder.h"` to the top of classes that will use it.
+#### Swift version
+```ruby
+pod 'LMGeocoderSwift'
+```
 
 ## Usage
 #### Geocoding
@@ -34,6 +35,23 @@ pod 'LMGeocoder'
                                     }
                                 }];
 ```
+```Swift
+LMGeocoder.sharedInstance.geocode(address: addressString,
+service: .AppleService,
+completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+
+// Parse formatted address
+var formattedAddress: String? = "-"
+if let address = results?.first, error == nil {
+formattedAddress = address.formattedAddress
+}
+
+// Update UI
+DispatchQueue.main.async {
+self.addressLabel.text = formattedAddress
+}
+})
+```
 
 #### Reverse Geocoding
 ```ObjC
@@ -46,18 +64,39 @@ pod 'LMGeocoder'
                                         }
                                     }];
 ```
+```Swift
+LMGeocoder.sharedInstance.reverseGeocode(coordinate: coordinate,
+service: .AppleService,
+completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+
+// Parse formatted address
+var formattedAddress: String? = "-"
+if let address = results?.first, error == nil {
+formattedAddress = address.formattedAddress
+}
+
+// Update UI
+DispatchQueue.main.async {
+self.addressLabel.text = formattedAddress
+}
+})
+```
 
 #### Cancel Geocode
 ```ObjC
 [[LMGeocoder sharedInstance] cancelGeocode];
 ```
+```Swift
+LMGeocoder.sharedInstance.cancelGeocode()
+```
 
-See sample Xcode project in `/LMGeocoderDemo`
+## Example
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## License
-LMGeocoder is licensed under the terms of the MIT License.
+LMGeocoder is available under the MIT license. See the LICENSE file for more info.
 
-## Contact
+## Author
 Minh Luong Nguyen
 * https://github.com/lminhtm
 * lminhtm@gmail.com

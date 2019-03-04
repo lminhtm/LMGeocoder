@@ -1,0 +1,16 @@
+PODS:
+  - LMGeocoder (1.0.9)
+
+DEPENDENCIES:
+  - LMGeocoder (from `../`)
+
+EXTERNAL SOURCES:
+  LMGeocoder:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LMGeocoder: 056421f0dcd71972f7de6b29eae7fd3785b15d45
+
+PODFILE CHECKSUM: 4925dcdf83c1e8a06018d7e2f33bb6222425bf85
+
+COCOAPODS: 1.5.3
