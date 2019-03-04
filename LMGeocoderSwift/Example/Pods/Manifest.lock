@@ -1,0 +1,16 @@
+PODS:
+  - LMGeocoderSwift (1.0.0)
+
+DEPENDENCIES:
+  - LMGeocoderSwift (from `../`)
+
+EXTERNAL SOURCES:
+  LMGeocoderSwift:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LMGeocoderSwift: e6325b0c2d6e2ce6206e2138989a684e443d26a0
+
+PODFILE CHECKSUM: e6725773c528b5cc932f5f47c695af4223c00d8b
+
+COCOAPODS: 1.5.3
