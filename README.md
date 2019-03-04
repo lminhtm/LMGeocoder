@@ -30,7 +30,8 @@ pod 'LMGeocoderSwift'
                                 completionHandler:^(NSArray *results, NSError *error) {
                                     if (results.count && !error) {
                                         LMAddress *address = [results firstObject];
-                                        NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
+                                        NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude,
+                                        address.coordinate.longitude);
                                     }
                                 }];
 ```
@@ -38,9 +39,9 @@ pod 'LMGeocoderSwift'
 LMGeocoder.sharedInstance.geocode(address: addressString,
                                   service: .AppleService,
                                   completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-
                                         if let address = results?.first, error == nil {
-                                            NSLog("Address: \(address.formattedAddress ?? "-")")
+                                            NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0),
+                                            \(address.coordinate?.longitude ?? 0))")
                                         }
 })
 ```
@@ -60,9 +61,8 @@ LMGeocoder.sharedInstance.geocode(address: addressString,
 LMGeocoder.sharedInstance.reverseGeocode(coordinate: coordinate,
                                          service: .AppleService,
                                          completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-
                                                 if let address = results?.first, error == nil {
-                                                    NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0), \(address.coordinate?.longitude ?? 0))")
+                                                    NSLog("Address: \(address.formattedAddress ?? "-")")
                                                 }
 })
 ```
