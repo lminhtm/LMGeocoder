@@ -1,9 +1,6 @@
 # LMGeocoder
 LMGeocoder is a simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.
 
-[![License](https://img.shields.io/cocoapods/l/LMGeocoderSwift.svg?style=flat)](https://cocoapods.org/pods/LMGeocoderSwift)
-[![Platform](https://img.shields.io/cocoapods/p/LMGeocoderSwift.svg?style=flat)](https://cocoapods.org/pods/LMGeocoderSwift)
-
 ![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
 ## Features
