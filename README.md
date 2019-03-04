@@ -82,7 +82,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 LMGeocoder is available under the MIT license. See the LICENSE file for more info.
 
 ## Author
-Minh Luong Nguyen
+Minh Nguyen
 * https://github.com/lminhtm
 * lminhtm@gmail.com
 
