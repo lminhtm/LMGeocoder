@@ -1,12 +1,10 @@
 # LMGeocoderSwift
+LMGeocoderSwift is a simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.
 
 [![CI Status](https://img.shields.io/travis/LMinh/LMGeocoderSwift.svg?style=flat)](https://travis-ci.org/LMinh/LMGeocoderSwift)
 [![Version](https://img.shields.io/cocoapods/v/LMGeocoderSwift.svg?style=flat)](https://cocoapods.org/pods/LMGeocoderSwift)
 [![License](https://img.shields.io/cocoapods/l/LMGeocoderSwift.svg?style=flat)](https://cocoapods.org/pods/LMGeocoderSwift)
 [![Platform](https://img.shields.io/cocoapods/p/LMGeocoderSwift.svg?style=flat)](https://cocoapods.org/pods/LMGeocoderSwift)
-
-==============
-LMGeocoderSwift is a simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.
 
 ![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
@@ -16,6 +14,7 @@ LMGeocoderSwift is a simple wrapper for geocoding and reverse geocoding, using b
 
 ## Requirements
 * iOS 8.0 or higher
+* Swift 4.2
 
 ## Installation
 LMGeocoderSwift is available through [CocoaPods](https://cocoapods.org). To install
@@ -29,38 +28,24 @@ pod 'LMGeocoderSwift'
 #### Geocoding
 ```Swift
 LMGeocoder.sharedInstance.geocode(address: addressString,
-service: .AppleService,
-completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+                                  service: .AppleService,
+                                  completionHandler: { (results: Array<LMAddress>?, error: Error?) in
 
-// Parse formatted address
-var formattedAddress: String? = "-"
-if let address = results?.first, error == nil {
-formattedAddress = address.formattedAddress
-}
-
-// Update UI
-DispatchQueue.main.async {
-self.addressLabel.text = formattedAddress
-}
+                                        if let address = results?.first, error == nil {
+                                            NSLog("Address: \(address.formattedAddress ?? "-")")
+                                        }
 })
 ```
 
 #### Reverse Geocoding
 ```Swift
 LMGeocoder.sharedInstance.reverseGeocode(coordinate: coordinate,
-service: .AppleService,
-completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+                                         service: .AppleService,
+                                         completionHandler: { (results: Array<LMAddress>?, error: Error?) in
 
-// Parse formatted address
-var formattedAddress: String? = "-"
-if let address = results?.first, error == nil {
-formattedAddress = address.formattedAddress
-}
-
-// Update UI
-DispatchQueue.main.async {
-self.addressLabel.text = formattedAddress
-}
+                                                if let address = results?.first, error == nil {
+                                                    NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0), \(address.coordinate?.longitude ?? 0))")
+                                                }
 })
 ```
 
@@ -76,6 +61,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 LMGeocoderSwift is available under the MIT license. See the LICENSE file for more info.
 
 ## Author
-Minh Luong Nguyen
+Minh Nguyen
 * https://github.com/lminhtm
 * lminhtm@gmail.com

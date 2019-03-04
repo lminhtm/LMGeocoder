@@ -1,6 +1,8 @@
-LMGeocoder
-==============
+# LMGeocoder
 LMGeocoder is a simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.
+
+[![License](https://img.shields.io/cocoapods/l/LMGeocoderSwift.svg?style=flat)](https://cocoapods.org/pods/LMGeocoderSwift)
+[![Platform](https://img.shields.io/cocoapods/p/LMGeocoderSwift.svg?style=flat)](https://cocoapods.org/pods/LMGeocoderSwift)
 
 ![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
@@ -9,7 +11,7 @@ LMGeocoder is a simple wrapper for geocoding and reverse geocoding, using both G
 * Use both Google Geocoding API and Apple iOS Geocoding Framework.
 
 ## Requirements
-* iOS 8.0 or higher
+iOS 8.0 or higher
 
 ## Installation
 LMGeocoder is available through [CocoaPods](https://cocoapods.org). To install
@@ -37,19 +39,12 @@ pod 'LMGeocoderSwift'
 ```
 ```Swift
 LMGeocoder.sharedInstance.geocode(address: addressString,
-service: .AppleService,
-completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+                                  service: .AppleService,
+                                  completionHandler: { (results: Array<LMAddress>?, error: Error?) in
 
-// Parse formatted address
-var formattedAddress: String? = "-"
-if let address = results?.first, error == nil {
-formattedAddress = address.formattedAddress
-}
-
-// Update UI
-DispatchQueue.main.async {
-self.addressLabel.text = formattedAddress
-}
+                                        if let address = results?.first, error == nil {
+                                            NSLog("Address: \(address.formattedAddress ?? "-")")
+                                        }
 })
 ```
 
@@ -66,19 +61,12 @@ self.addressLabel.text = formattedAddress
 ```
 ```Swift
 LMGeocoder.sharedInstance.reverseGeocode(coordinate: coordinate,
-service: .AppleService,
-completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+                                         service: .AppleService,
+                                         completionHandler: { (results: Array<LMAddress>?, error: Error?) in
 
-// Parse formatted address
-var formattedAddress: String? = "-"
-if let address = results?.first, error == nil {
-formattedAddress = address.formattedAddress
-}
-
-// Update UI
-DispatchQueue.main.async {
-self.addressLabel.text = formattedAddress
-}
+                                                if let address = results?.first, error == nil {
+                                                    NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0), \(address.coordinate?.longitude ?? 0))")
+                                                }
 })
 ```
 
