@@ -1,6 +1,0 @@
-framework module LMGeocoderSwift {
-  umbrella header "LMGeocoderSwift-umbrella.h"
-
-  export *
-  module * { export * }
-}

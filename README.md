@@ -1,6 +1,11 @@
 # LMGeocoder
 LMGeocoder is a simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.
 
+[![CI Status](https://img.shields.io/travis/LMinh/LMGeocoder.svg?style=flat)](https://travis-ci.org/LMinh/LMGeocoder)
+[![Version](https://img.shields.io/cocoapods/v/LMGeocoder.svg?style=flat)](https://cocoapods.org/pods/LMGeocoder)
+[![License](https://img.shields.io/cocoapods/l/LMGeocoder.svg?style=flat)](https://cocoapods.org/pods/LMGeocoder)
+[![Platform](https://img.shields.io/cocoapods/p/LMGeocoder.svg?style=flat)](https://cocoapods.org/pods/LMGeocoder)
+
 ![](https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png)
 
 ## Features
@@ -13,13 +18,9 @@ iOS 8.0 or higher
 ## Installation
 LMGeocoder is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
-#### Objective-C version
+
 ```ruby
 pod 'LMGeocoder'
-```
-#### Swift version
-```ruby
-pod 'LMGeocoderSwift'
 ```
 
 ## Usage
@@ -30,20 +31,9 @@ pod 'LMGeocoderSwift'
                                 completionHandler:^(NSArray *results, NSError *error) {
                                     if (results.count && !error) {
                                         LMAddress *address = [results firstObject];
-                                        NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude,
-                                        address.coordinate.longitude);
+                                        NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
                                     }
                                 }];
-```
-```Swift
-LMGeocoder.sharedInstance.geocode(address: addressString,
-                                  service: .AppleService,
-                                  completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                                        if let address = results?.first, error == nil {
-                                            NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0),
-                                            \(address.coordinate?.longitude ?? 0))")
-                                        }
-})
 ```
 
 #### Reverse Geocoding
@@ -57,22 +47,10 @@ LMGeocoder.sharedInstance.geocode(address: addressString,
                                         }
                                     }];
 ```
-```Swift
-LMGeocoder.sharedInstance.reverseGeocode(coordinate: coordinate,
-                                         service: .AppleService,
-                                         completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                                                if let address = results?.first, error == nil {
-                                                    NSLog("Address: \(address.formattedAddress ?? "-")")
-                                                }
-})
-```
 
 #### Cancel Geocode
 ```ObjC
 [[LMGeocoder sharedInstance] cancelGeocode];
-```
-```Swift
-LMGeocoder.sharedInstance.cancelGeocode()
 ```
 
 ## Example
@@ -85,9 +63,3 @@ LMGeocoder is available under the MIT license. See the LICENSE file for more inf
 Minh Nguyen
 * https://github.com/lminhtm
 * lminhtm@gmail.com
-
-## Projects using LMGeocoder
-Feel free to add your project [here](https://github.com/lminhtm/LMGeocoder/wiki/Projects-using-LMGeocoder)
-
-## Donations
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J3WZJT2AD28NW&lc=VN&item_name=LMGeocoder&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
