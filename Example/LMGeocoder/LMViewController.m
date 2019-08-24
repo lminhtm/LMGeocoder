@@ -95,9 +95,9 @@
     self.longitudeLabel.text = [NSString stringWithFormat:@"%f", coordinate.longitude];
     
     // Start to reverse
-    [[LMGeocoder sharedInstance] cancelGeocode];
     [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
-                                                  service:kLMGeocoderAppleService
+                                                  service:LMGeocoderServiceGoogle
+                                       alternativeService:LMGeocoderServiceApple
                                         completionHandler:^(NSArray *results, NSError *error) {
                                             
                                             // Parse formatted address
@@ -106,11 +106,10 @@
                                                 LMAddress *address = [results firstObject];
                                                 formattedAddress = address.formattedAddress;
                                             }
+                                            NSLog(@"%@", formattedAddress);
                                             
                                             // Update UI
-                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                self.addressLabel.text = formattedAddress;
-                                            });
+                                            self.addressLabel.text = formattedAddress;
                                         }];
 }
 

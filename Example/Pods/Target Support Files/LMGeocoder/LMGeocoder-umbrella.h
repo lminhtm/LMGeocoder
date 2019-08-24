@@ -12,6 +12,7 @@
 
 #import "LMAddress.h"
 #import "LMGeocoder.h"
+#import "LMGeocodingOperation.h"
 
 FOUNDATION_EXPORT double LMGeocoderVersionNumber;
 FOUNDATION_EXPORT const unsigned char LMGeocoderVersionString[];

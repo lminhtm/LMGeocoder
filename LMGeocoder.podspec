@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LMGeocoder'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'Simple wrapper for geocoding and reverse geocoding, using both Google Geocoding API and Apple iOS Geocoding Framework.'
   s.description      = <<-DESC
 Simple wrapper for geocoding and reverse geocoding, written in Objective-C, using both Google Geocoding API and Apple iOS Geocoding Framework.

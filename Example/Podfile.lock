@@ -1,5 +1,5 @@
 PODS:
-  - LMGeocoder (1.0.9)
+  - LMGeocoder (1.1.0)
 
 DEPENDENCIES:
   - LMGeocoder (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LMGeocoder: 056421f0dcd71972f7de6b29eae7fd3785b15d45
+  LMGeocoder: a5f44d368721c1f5901d61a9fca2e3268e8bf7a7
 
 PODFILE CHECKSUM: 4925dcdf83c1e8a06018d7e2f33bb6222425bf85
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.4

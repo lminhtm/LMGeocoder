@@ -52,10 +52,10 @@ static NSString * const LMLinesKey                  = @"lines";
     self = [self init];
     if (self) {
         switch (serviceType) {
-            case kLMGeocoderAppleService:
+            case LMGeocoderServiceApple:
                 [self parseAppleResponse:locationData];
                 break;
-            case kLMGeocoderGoogleService:
+            case LMGeocoderServiceGoogle:
                 [self parseGoogleResponse:locationData];
                 break;
             default:

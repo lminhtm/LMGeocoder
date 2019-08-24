@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B7689FD08B06BEB26B4604BA573E9D9"
+               BlueprintIdentifier = "0E4FB6E53ADFDA6053307AA9C40280B5"
                BuildableName = "Pods_LMGeocoder_Tests.framework"
                BlueprintName = "Pods-LMGeocoder_Tests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B7689FD08B06BEB26B4604BA573E9D9"
+            BlueprintIdentifier = "0E4FB6E53ADFDA6053307AA9C40280B5"
             BuildableName = "Pods_LMGeocoder_Tests.framework"
             BlueprintName = "Pods-LMGeocoder_Tests"
             ReferencedContainer = "container:Pods.xcodeproj">

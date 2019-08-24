@@ -89,7 +89,7 @@
  Initialize with response from server
  
  @param locationData response object recieved from server
- @param serviceType  pass here kLMGeocoderGoogleService or kLMGeocoderAppleService
+ @param serviceType  pass here LMGeocoderServiceGoogle or LMGeocoderServiceApple
  @return object with all data set for use
  */
 - (nonnull id)initWithLocationData:(nonnull id)locationData serviceType:(int)serviceType;

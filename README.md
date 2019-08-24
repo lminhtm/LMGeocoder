@@ -30,7 +30,8 @@ https://github.com/lminhtm/LMGeocoderSwift
 #### Geocoding
 ```ObjC
 [[LMGeocoder sharedInstance] geocodeAddressString:addressString
-                                          service:kLMGeocoderGoogleService
+                                          service:LMGeocoderServiceGoogle
+                               alternativeService:LMGeocoderServiceApple
                                 completionHandler:^(NSArray *results, NSError *error) {
                                     if (results.count && !error) {
                                         LMAddress *address = [results firstObject];
@@ -42,7 +43,8 @@ https://github.com/lminhtm/LMGeocoderSwift
 #### Reverse Geocoding
 ```ObjC
 [[LMGeocoder sharedInstance] reverseGeocodeCoordinate:coordinate
-                                              service:kLMGeocoderGoogleService
+                                              service:LMGeocoderServiceGoogle
+                                   alternativeService:LMGeocoderServiceApple
                                     completionHandler:^(NSArray *results, NSError *error) {
                                         if (results.count && !error) {
                                             LMAddress *address = [results firstObject];
