@@ -1,3 +1,5 @@
+It was archived. Please write to me at kanstantsin.bucha@icloud.com in case any issues occur.
+
 LMGeocoder
 ==============
 LMGeocoder is a simple wrapper for geocoding and reverse geocoding dynamically from user input. It is blocked-based geocoder, use both Google Geocoding API and Apple iOS Geocoding Framework.
